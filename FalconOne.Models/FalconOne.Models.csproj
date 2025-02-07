@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Dtos\System\**" />
+    <Compile Remove="Helpers\**" />
+    <EmbeddedResource Remove="Dtos\System\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Dtos\System\**" />
+    <None Remove="Helpers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FalconOne.Enumerations\FalconOne.Enumerations.csproj" />
+    <ProjectReference Include="..\FalconOne.ExtensionMethods\FalconOne.Extensions.csproj" />
+    <ProjectReference Include="..\Utilities\FalconOne.Helpers.csproj" />
+  </ItemGroup>
+
+</Project>

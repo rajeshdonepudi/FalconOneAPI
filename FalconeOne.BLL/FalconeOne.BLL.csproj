@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FalconOne.AI.Core\FalconOne.AI.Core.csproj" />
+		<ProjectReference Include="..\FalconOne.AI.Models\FalconOne.AI.Models.csproj" />
+		<ProjectReference Include="..\FalconOne.AI.Pipelines\FalconOne.AI.Pipelines.csproj" />
+		<ProjectReference Include="..\FalconOne.DLL\FalconOne.DAL.csproj" />
+		<ProjectReference Include="..\FalconOne.Enumerations\FalconOne.Enumerations.csproj" />
+		<ProjectReference Include="..\FalconOne.ExtensionMethods\FalconOne.Extensions.csproj" />
+		<ProjectReference Include="..\FalconOne.Integrations\FalconOne.Integrations.csproj" />
+		<ProjectReference Include="..\FalconOne.Models\FalconOne.Models.csproj" />
+		<ProjectReference Include="..\Utilities\FalconOne.Helpers.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="KE.IdenticonSharp" Version="1.4.0" />
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
+		<PackageReference Include="Microsoft.ML.FastTree" Version="4.0.0" />
+		<PackageReference Include="QRCoder" Version="1.6.0" />
+		<PackageReference Include="Serilog" Version="4.0.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+	</ItemGroup>
+
+</Project>

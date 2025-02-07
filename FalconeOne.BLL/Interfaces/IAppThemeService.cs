@@ -1,0 +1,13 @@
+﻿using FalconOne.Models.Dtos.Theme;
+
+namespace FalconeOne.BLL.Interfaces
+{
+    public interface IAppThemeService
+    {
+        Task<bool> DeleteThemeAsync(Guid themeId, CancellationToken cancellationToken);
+        Task<SiteThemeDto> GetPrimaryThemeAsync(CancellationToken cancellationToken);
+        Task<IEnumerable<SiteThemeDto>> GetThemesAsync(CancellationToken cancellationToken);
+        Task<bool> AddThemeAsync(UpsertSiteThemeDto model, CancellationToken cancellationToken);
+        Task<bool> UpdateThemeAsync(UpsertSiteThemeDto model, CancellationToken cancellationToken);
+    }
+}
