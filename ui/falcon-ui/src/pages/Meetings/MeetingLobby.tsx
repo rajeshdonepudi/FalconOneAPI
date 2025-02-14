@@ -17,6 +17,7 @@ enum MeetingType {
 
 const Meeting = () => {
   const [meetingType, setMeetingType] = useState<MeetingType>(MeetingType.None);
+  const [meetingName, setMeetingName] = useState<string>("");
   const theme = useTheme();
   const navigate = useNavigate();
   return (
@@ -75,6 +76,12 @@ const Meeting = () => {
                       id="Create meeting"
                       label="Create meeting"
                       variant="outlined"
+                      value={meetingName}
+                      onChange={(
+                        event: React.ChangeEvent<HTMLInputElement>
+                      ) => {
+                        setMeetingName(event.target.value);
+                      }}
                     />
                     <Button
                       onClick={() => {
@@ -82,7 +89,7 @@ const Meeting = () => {
                           NavUtilities.ToSecureArea(
                             `meetings/create-join?action=${
                               MeetingType.CreateMeeting
-                            }&identifier=${window.crypto.randomUUID()}&name=${"ss"}`
+                            }&identifier=${window.crypto.randomUUID()}&name=${meetingName}`
                           )
                         );
                       }}

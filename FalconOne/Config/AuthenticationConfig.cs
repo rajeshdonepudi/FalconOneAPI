@@ -71,18 +71,19 @@ namespace FalconOne.API.Config
                         return Task.CompletedTask;
                     }
                 };
-            }).AddGoogle(o =>
-            {
-                o.ClientId = "";
-                o.ClientSecret = "";
-                o.CallbackPath = "/api/Account/callback";
-                o.Events.OnCreatingTicket = context =>
-                {
-                    var picture = context.User.GetProperty("picture").GetString();
-
-                    return Task.CompletedTask;
-                };
             });
+            //.AddGoogle(o =>
+            //{
+            //    o.ClientId = "";
+            //    o.ClientSecret = "";
+            //    o.CallbackPath = "/api/Account/callback";
+            //    o.Events.OnCreatingTicket = context =>
+            //    {
+            //        var picture = context.User.GetProperty("picture").GetString();
+
+            //        return Task.CompletedTask;
+            //    };
+            //});
         }
     }
 }

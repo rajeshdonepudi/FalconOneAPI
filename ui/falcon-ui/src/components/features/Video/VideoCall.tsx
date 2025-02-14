@@ -14,6 +14,7 @@ import {
   Stack,
   Typography,
   Tooltip,
+  Paper,
 } from "@mui/material";
 import {
   Mic,
@@ -22,6 +23,7 @@ import {
   VideocamOff,
   CallEnd,
   Group,
+  Padding,
 } from "@mui/icons-material";
 import EnvUtilities from "@/utilities/EnvUtilities";
 import CircleIcon from "@mui/icons-material/Circle";
@@ -47,6 +49,7 @@ const VideoCall: React.FC = () => {
   const [participantsDrawer, setParticipantsDrawer] = useState(false);
   const [isAudioEnabled, setIsAudioEnabled] = useState(true);
   const [isVideoEnabled, setIsVideoEnabled] = useState(true);
+  const [isCallStarted, setIsCallStarted] = useState(false);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -119,6 +122,8 @@ const VideoCall: React.FC = () => {
                 callerId,
                 JSON.stringify(answer)
               );
+
+              setIsCallStarted(true);
             }}
           >
             Answer
@@ -302,9 +307,18 @@ const VideoCall: React.FC = () => {
           )}
         </Box>
       </Drawer>
-      <Grid container sx={{ height: "100vh", backgroundColor: "#f4f5f7" }}>
+      <Grid container>
+        <Grid item md={12}>
+          <Paper variant="outlined" sx={{ padding: "0.5rem" }}>
+            <Typography variant="h6">{meetName}</Typography>
+          </Paper>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        sx={{ height: "100vh", backgroundColor: "#f4f5f7", overflow: "hidden" }}
+      >
         <Grid item xs={12} md={9} sx={{ height: "100%" }}>
-          <Typography>Rajesh</Typography>
           <video
             ref={remoteVideoRef}
             autoPlay
