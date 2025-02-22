@@ -20,7 +20,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpGet("view-role-info")]
-        [FalconOneAuthorize(PermissionPool.Role.VIEW_ROLE)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.VIEW_ROLE)]
         public async Task<IActionResult> GetRole([FromQuery] Guid roleId, CancellationToken cancellationToken)
         {
             var result = await _roleService.GetRoleAsync(roleId, cancellationToken);
@@ -29,7 +29,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("add-role")]
-        [FalconOneAuthorize(PermissionPool.Role.CREATE_ROLE)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.CREATE_ROLE)]
         public async Task<IActionResult> CreateRole(RoleDto model, CancellationToken cancellationToken)
         {
             var result = await _roleService.CreateRoleAsync(model, cancellationToken);
@@ -40,7 +40,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpDelete("delete-role")]
-        [FalconOneAuthorize(PermissionPool.Role.DELETE_ROLE)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.DELETE_ROLE)]
         public async Task<IActionResult> DeleteRole([FromQuery] string roleId, CancellationToken cancellationToken)
         {
             var result = await _roleService.DeleteRoleAsync(roleId, cancellationToken);
@@ -51,7 +51,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpGet("view-roles")]
-        [FalconOneAuthorize(PermissionPool.Role.VIEW_ROLES)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.VIEW_ROLES)]
         public async Task<IActionResult> GetRoles(CancellationToken cancellationToken)
         {
             var result = await _roleService.GetAllTenantRolesAsync(cancellationToken);
@@ -60,7 +60,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("view-user-roles")]
-        [FalconOneAuthorize(PermissionPool.Role.VIEW_USER_ROLES)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.VIEW_USER_ROLES)]
         public async Task<IActionResult> GetAllRoles(PageParams model, CancellationToken cancellationToken)
         {
             var result = await _roleService.GetAllUserRolesAsync(model, cancellationToken);
@@ -69,7 +69,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("view-users-in-role")]
-        [FalconOneAuthorize(PermissionPool.Role.VIEW_USERS_IN_ROLES)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.VIEW_USERS_IN_ROLES)]
         public async Task<IActionResult> GetUsersAssociatedWithRole(GetUsersInRoleDto model, CancellationToken cancellationToken)
         {
             var result = await _roleService.GetAllUsersInRoleAsync(model, cancellationToken);
@@ -78,7 +78,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("add-user-to-role")]
-        [FalconOneAuthorize(PermissionPool.Role.ADD_USER_TO_ROLE)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.ADD_USER_TO_ROLE)]
         public async Task<IActionResult> AddUserToRole(AddUserToRoleDto model, CancellationToken cancellationToken)
         {
             var result = await _roleService.AddUserToRoleAsync(model, cancellationToken);
@@ -91,7 +91,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpDelete("remove-user-from-role")]
-        [FalconOneAuthorize(PermissionPool.Role.REMOVE_USER_FROM_ROLE)]
+        [FalconOneAuthorize(PermissionPool.Role_Managment.REMOVE_USER_FROM_ROLE)]
         public async Task<IActionResult> RemoveUserFromRole(RemoveUserFromRoleDto model, CancellationToken cancellationToken)
         {
             var result = await _roleService.RemoveUserFromRoleAsync(model, cancellationToken);

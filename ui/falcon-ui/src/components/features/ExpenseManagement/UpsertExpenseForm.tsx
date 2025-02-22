@@ -10,7 +10,6 @@ import { AddExpenseValidationScheme } from "@/validation-schemes/ExpenseManageme
 import {
   FormControl,
   FormHelperText,
-  Grid,
   InputLabel,
   ListItemText,
   MenuItem,
@@ -22,6 +21,7 @@ import { lazy, useEffect, useImperativeHandle, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 const Stack = lazy(() => import("@mui/material/Stack"));
 const TextField = lazy(() => import("@mui/material/TextField"));
+import Grid from '@mui/material/Grid2';
 
 const UpsertExpenseForm = (props: any) => {
   const { t: commonLocale } = useTranslation();
@@ -74,7 +74,7 @@ const UpsertExpenseForm = (props: any) => {
           style={{ width: "100%" }}
         >
           <Grid container spacing={1.5}>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 id="amount"
                 name="amount"
@@ -90,7 +90,7 @@ const UpsertExpenseForm = (props: any) => {
               />
             </Grid>
 
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 id="description"
                 name="description"
@@ -112,7 +112,7 @@ const UpsertExpenseForm = (props: any) => {
                 }
               />
             </Grid>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <FormControl sx={{ width: "100%" }} size="medium">
                 <InputLabel id="expense-type">Expense Type</InputLabel>
                 <Select
@@ -134,7 +134,7 @@ const UpsertExpenseForm = (props: any) => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <FormControl sx={{ width: "100%" }} size="medium">
                 <InputLabel id="category-label">Category</InputLabel>
                 <Select

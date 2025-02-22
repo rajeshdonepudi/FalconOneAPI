@@ -1,4 +1,4 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import {
   useGetAllTenantPermissionsQuery,
   useManagePermissionsMutation,
@@ -10,7 +10,6 @@ import {
   Checkbox,
   Chip,
   FormControlLabel,
-  Grid,
   IconButton,
   List,
   ListItem,
@@ -32,6 +31,9 @@ import { PermissionsActions } from "@/enumerations/Security/Permissions/permissi
 import UpsertPermissionsForm from "@/components/features/Security/Permissions/ManagePermissionsForm";
 import { AssignOrUnassignPermissionModel } from "@/models/Security/Permissions/AssignOrUnassignPermissionModel";
 import AppConstants from "@/constants/constants";
+import Grid from "@mui/material/Grid2";
+import AppPaper from "@/components/ui-components/AppPaper";
+
 const ViewPermissions = () => {
   const [selectedPermissions, setSelectedPermissions] = useState<
     KeyValuePair<string, string>[]
@@ -154,9 +156,9 @@ const ViewPermissions = () => {
   };
 
   return (
-    <AppLazyLoader>
+    <>
       <Grid container spacing={3}>
-        <Grid item md={12} xs={12} sm={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Stack
             direction={"row"}
             alignItems={"center"}
@@ -189,7 +191,7 @@ const ViewPermissions = () => {
           </Stack>
         </Grid>
         {selectedPermissions.length > 0 && (
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12 }}>
             <Stack
               direction={"row"}
               alignItems={"center"}
@@ -213,7 +215,7 @@ const ViewPermissions = () => {
             <Paper variant="outlined" sx={{ padding: "0.5rem" }}>
               <Grid container spacing={AppConstants.layout.StandardSpacing}>
                 {selectedPermissions.map((permission) => (
-                  <Grid item xs={12} sm={6} md={3} key={permission.key}>
+                  <Grid size={{ sm: 6, md: 3 }} key={permission.key}>
                     <Paper variant="outlined" style={{ padding: "10px" }}>
                       <Typography variant="body2">
                         {permission.value}
@@ -229,7 +231,7 @@ const ViewPermissions = () => {
             </Paper>
           </Grid>
         )}
-        <Grid item md={12} xs={12} sm={12}>
+        <Grid size={{ xs: 12, md: 12, sm: 12 }}>
           <Paper variant="outlined" sx={{ padding: "0.5rem" }}>
             <Grid container spacing={0.8}>
               {permissionsData?.data.map((group) => {
@@ -240,10 +242,7 @@ const ViewPermissions = () => {
                   );
                 return (
                   <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4}
+                    size={{ md: 4 }}
                     key={group.id}
                     style={{ display: "flex" }}
                   >
@@ -336,9 +335,9 @@ const ViewPermissions = () => {
         handleOk={handleOk}
         handleClose={handleModalClose}
       >
-        <AppLazyLoader>{getViewBasedByAction()}</AppLazyLoader>
+        <>{getViewBasedByAction()}</>
       </AppModal>
-    </AppLazyLoader>
+    </>
   );
 };
 

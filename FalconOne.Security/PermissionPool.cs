@@ -2,17 +2,12 @@
 {
     public static class PermissionPool
     {
-        public static class DomainInfo
-        {
-            public const string VIEW_DOMAIN_INFO = "VIEW_DOMAIN_INFO";
-        }
-
         public static class AI
         {
             public const string VIEW_TRAINED_MODELS = "VIEW_TRAINED_MODELS";
         }
 
-        public static class SecurityGroup
+        public static class Security_Group
         {
             public const string VIEW_SECURITY_GROUP_INFO = "VIEW_SECURITY_GROUP_INFO";
             public const string CREATE_SECURITY_GROUP = "CREATE_SECURITY_GROUP";
@@ -26,13 +21,13 @@
             public const string VIEW_SECURITY_GROUP_PERMISSIONS = "VIEW_SECURITY_GROUP_PERMISSIONS";
         }
 
-        public static class Permission
+        public static class Permission_Management
         {
             public const string VIEW_PERMISSIONS = "VIEW_PERMISSIONS";
             public const string MANAGE_PERMISSIONS = "MANAGE_PERMISSIONS";
         }
 
-        public static class User
+        public static class User_Permissions
         {
             public const string USER_DASHBOARD_METRIC_INFO = "USER_DASHBOARD_METRIC_INFO";
             public const string VIEW_USER_INFO = "GET_USER_INFO";
@@ -44,7 +39,7 @@
             public const string CHANGE_PROFILE_PICTURE = "CHANGE_PROFILE_PICTURE";
         }
 
-        public static class Theme
+        public static class Theme_Managment
         {
             public const string VIEW_ALL_THEMES = "VIEW_ALL_THEMES";
             public const string UPDATE_THEME = "UPDATE_THEME";
@@ -52,7 +47,7 @@
             public const string DELETE_THEME = "DELETE_THEME";
         }
 
-        public static class ExpenseManagement
+        public static class Expense_Management
         {
             public const string ADD_EXPENSE = "ADD_EXPENSE";
             public const string VIEW_EXPENSE_INFO = "VIEW_EXPENSE_INFO";
@@ -70,7 +65,7 @@
             public const string VIEW_ALL_EXPENSE_TYPES_LOOKUP = "VIEW_ALL_EXPENSE_TYPES_LOOKUP";
         }
 
-        public static class  Role
+        public static class  Role_Managment
         {
             public const string CREATE_ROLE = "CREATE_ROLE";
             public const string VIEW_ROLE = "VIEW_ROLE";
@@ -82,7 +77,7 @@
             public const string REMOVE_USER_FROM_ROLE = "REMOVE_USER_FROM_ROLE";
         }
 
-        public static class UserManagement
+        public static class User_Management
         {
             public const string ADD_USER = "ADD_USER";
             public const string VIEW_USERS = "VIEW_USERS";

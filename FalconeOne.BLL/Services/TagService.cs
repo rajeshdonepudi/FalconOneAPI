@@ -2,7 +2,7 @@
 using FalconeOne.BLL.Interfaces;
 using FalconOne.DAL.Contracts;
 using FalconOne.Models.Dtos.Tags;
-using FalconOne.Models.Entities.Mails;
+using FalconOne.Models.Entities.Tags;
 using FalconOne.Models.Entities.Users;
 using IdenticonSharp.Identicons;
 using Microsoft.AspNetCore.Http;

@@ -7,7 +7,7 @@ const DeleteOutlineOutlinedIcon = lazy(
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
 const EditOutlinedIcon = lazy(() => import("@mui/icons-material/EditOutlined"));
-import AppLazyLoader from "@ui-components/AppLazyLoader";
+import AppLoader from "@ui-components/AppLoader";
 import AppModal from "@ui-components/AppModal";
 import { UserActions } from "@/enumerations/Users/user-actions.enum";
 import { AppModalState } from "@models/Common/ModalState";
@@ -32,11 +32,13 @@ import {
   ListItemText,
   Menu,
   MenuItem,
+  Paper,
   Skeleton,
   TextField,
   Tooltip,
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Grid from "@mui/material/Grid2";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import ToggleOnIcon from "@mui/icons-material/ToggleOn";
 import ToggleOffIcon from "@mui/icons-material/ToggleOff";
@@ -47,7 +49,6 @@ import AppDataGrid from "@/components/ui-components/AppDataGrid";
 import { toast } from "react-toastify";
 import { UserBulkActionsEnum } from "@/enumerations/Users/user-bulk-action.enum";
 import { TakeUserBulkAction } from "@/models/Users/TakeUserBulkActionModel";
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
 import moment from "moment";
 import PersonIcon from "@mui/icons-material/Person";
 
@@ -60,6 +61,7 @@ import AppConstants from "@/constants/constants";
 import AppMetricCard from "@/components/ui-components/AppMetricCard";
 import GppBadOutlinedIcon from "@mui/icons-material/GppBadOutlined";
 import { LockPersonOutlined } from "@mui/icons-material";
+import AppPaper from "@/components/ui-components/AppPaper";
 const PermIdentityOutlinedIcon = lazy(
   () => import("@mui/icons-material/PermIdentityOutlined")
 );
@@ -70,7 +72,6 @@ const VerifiedUserOutlinedIcon = lazy(
   () => import("@mui/icons-material/VerifiedUserOutlined")
 );
 const Button = lazy(() => import("@mui/material/Button"));
-const Grid = lazy(() => import("@mui/material/Grid"));
 const Stack = lazy(() => import("@mui/material/Stack"));
 const Typography = lazy(() => import("@mui/material/Typography"));
 
@@ -380,11 +381,6 @@ const ManageUsers = () => {
                 "Are you completely sure you want to say goodbye to this user? Just a friendly reminder that this action can't be reversed."
               }
             </Typography>
-            <AppLottieAnimation
-              width="8rem"
-              height="8rem"
-              lottieUrl="https://lottie.host/80c779f1-d486-4149-8ddc-c828bc4f8861/W3LxdBs2e6.json"
-            />
           </Stack>
         );
       case UserActions.ADD_USER:
@@ -581,9 +577,9 @@ const ManageUsers = () => {
         content={
           <>
             <Grid container spacing={AppConstants.layout.StandardSpacing}>
-              <Grid item md={12} xs={12} sm={12}>
+              <Grid size={{ xs: 12, md: 12 }}>
                 <Grid container spacing={0.8}>
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                     <AppMetricCard
                       icon={PersonIcon}
                       color="#B771E5"
@@ -593,8 +589,8 @@ const ManageUsers = () => {
                       )}`}
                     />
                   </Grid>
-                  <Grid item md={3} xs={12}>
-                    {/* <Card variant="outlined">
+                  <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
+                    {/* <AppPaper>
                       <CardContent>
                         <Stack direction={"row"}>
                           <PermIdentityOutlinedIcon fontSize="small" />
@@ -620,7 +616,7 @@ const ManageUsers = () => {
                           )}
                         </Typography>
                       </CardContent>
-                    </Card> */}
+                    </AppPaper> */}
                     <AppMetricCard
                       icon={PermIdentityOutlinedIcon}
                       color="#77B254"
@@ -630,7 +626,7 @@ const ManageUsers = () => {
                       )}`}
                     />
                   </Grid>
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                     <AppMetricCard
                       icon={PersonOffOutlinedIcon}
                       color="#E82561"
@@ -640,7 +636,7 @@ const ManageUsers = () => {
                       )}`}
                     />
                   </Grid>
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                     <AppMetricCard
                       icon={VerifiedUserOutlinedIcon}
                       color="#355F2E"
@@ -650,7 +646,7 @@ const ManageUsers = () => {
                       )}`}
                     />
                   </Grid>
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                     <AppMetricCard
                       icon={GppBadOutlinedIcon}
                       color="#FF9D23"
@@ -660,7 +656,7 @@ const ManageUsers = () => {
                       )}`}
                     />
                   </Grid>
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                     <AppMetricCard
                       icon={LockPersonOutlined}
                       color="#8E1616"
@@ -673,164 +669,167 @@ const ManageUsers = () => {
                 </Grid>
               </Grid>
 
-              <Grid item md={12} xs={12} sm={12}>
-                <Grid container spacing={0.8} alignItems={"center"}>
-                  <Grid item md={11} sm={12} xs={12}>
-                    {isTableInfoLoading ? (
-                      <Skeleton height={60} />
-                    ) : (
-                      <TextField
-                        size="small"
-                        id="outlined-basic"
-                        label="Search user by email, firstname or lastname"
-                        variant="outlined"
-                        fullWidth
-                        onChange={(e) => userSearched(e.target.value)}
-                      />
-                    )}
+              <Grid size={{ xs: 12, md: 12 }}>
+                <AppPaper>
+                  <Grid container spacing={0.8} alignItems={"center"}>
+                    <Grid size={{ md: 11, sm: 12 }}>
+                      {isTableInfoLoading ? (
+                        <Skeleton height={60} />
+                      ) : (
+                        <TextField
+                          size="small"
+                          id="outlined-basic"
+                          label="Search user by email, firstname or lastname"
+                          variant="outlined"
+                          fullWidth
+                          onChange={(e) => userSearched(e.target.value)}
+                        />
+                      )}
+                    </Grid>
+                    <Grid size={{ md: 1, sm: 12 }}>
+                      {isTableInfoLoading ? (
+                        <Skeleton height={60} />
+                      ) : (
+                        <Button
+                          disabled={selectedAction.users.length === 0}
+                          startIcon={<MoreVertIcon />}
+                          variant="outlined"
+                          size="medium"
+                          fullWidth
+                          id="basic-button"
+                          aria-controls={open ? "basic-menu" : undefined}
+                          aria-haspopup="true"
+                          aria-expanded={open ? "true" : undefined}
+                          onClick={handleClick}
+                        >
+                          Actions
+                        </Button>
+                      )}
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        <MenuItem
+                          onClick={() =>
+                            handleSelectedAction(UserBulkActionsEnum.Activate)
+                          }
+                          disableRipple
+                        >
+                          <ListItemIcon>
+                            <ToggleOnIcon sx={{ color: "darkgreen" }} />
+                          </ListItemIcon>
+                          <ListItemText>Activate</ListItemText>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            handleSelectedAction(UserBulkActionsEnum.Deactivate)
+                          }
+                          disableRipple
+                        >
+                          <ListItemIcon>
+                            <ToggleOffIcon sx={{ color: "darkgreen" }} />
+                          </ListItemIcon>
+                          <ListItemText>Deactivate</ListItemText>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            handleSelectedAction(
+                              UserBulkActionsEnum.EmailConfirmed
+                            )
+                          }
+                          disableRipple
+                        >
+                          <ListItemIcon>
+                            <MarkEmailReadOutlinedIcon
+                              sx={{ color: "darkgreen" }}
+                            />
+                          </ListItemIcon>
+                          <ListItemText>Email Confirmed</ListItemText>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            handleSelectedAction(
+                              UserBulkActionsEnum.EmailNotConfirmed
+                            )
+                          }
+                          disableRipple
+                        >
+                          <ListItemIcon>
+                            <UnsubscribeIcon sx={{ color: "darkgreen" }} />
+                          </ListItemIcon>
+                          <ListItemText>Email Not Confirmed</ListItemText>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            handleSelectedAction(UserBulkActionsEnum.LockUser)
+                          }
+                          disableRipple
+                        >
+                          <ListItemIcon>
+                            <LockOutlinedIcon sx={{ color: "darkred" }} />
+                          </ListItemIcon>
+                          <ListItemText>Lock</ListItemText>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            handleSelectedAction(UserBulkActionsEnum.UnlockUser)
+                          }
+                          disableRipple
+                        >
+                          <ListItemIcon>
+                            <LockOpenOutlinedIcon sx={{ color: "darkgreen" }} />
+                          </ListItemIcon>
+                          <ListItemText>Unlock</ListItemText>
+                        </MenuItem>
+                        <MenuItem
+                          onClick={() =>
+                            handleSelectedAction(UserBulkActionsEnum.Delete)
+                          }
+                          disableRipple
+                        >
+                          <ListItemIcon>
+                            <DeleteOutlineOutlinedIcon
+                              sx={{ color: "darkred" }}
+                            />
+                          </ListItemIcon>
+                          <ListItemText>Delete</ListItemText>
+                        </MenuItem>
+                      </Menu>
+                    </Grid>
                   </Grid>
-                  <Grid item md={1} sm={12} xs={12}>
-                    {isTableInfoLoading ? (
-                      <Skeleton height={60} />
-                    ) : (
-                      <Button
-                        disabled={selectedAction.users.length === 0}
-                        startIcon={<MoreVertIcon />}
-                        variant="outlined"
-                        size="medium"
-                        fullWidth
-                        id="basic-button"
-                        aria-controls={open ? "basic-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        onClick={handleClick}
-                      >
-                        Actions
-                      </Button>
-                    )}
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
-                      MenuListProps={{
-                        "aria-labelledby": "basic-button",
-                      }}
-                    >
-                      <MenuItem
-                        onClick={() =>
-                          handleSelectedAction(UserBulkActionsEnum.Activate)
-                        }
-                        disableRipple
-                      >
-                        <ListItemIcon>
-                          <ToggleOnIcon sx={{ color: "darkgreen" }} />
-                        </ListItemIcon>
-                        <ListItemText>Activate</ListItemText>
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() =>
-                          handleSelectedAction(UserBulkActionsEnum.Deactivate)
-                        }
-                        disableRipple
-                      >
-                        <ListItemIcon>
-                          <ToggleOffIcon sx={{ color: "darkgreen" }} />
-                        </ListItemIcon>
-                        <ListItemText>Deactivate</ListItemText>
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() =>
-                          handleSelectedAction(
-                            UserBulkActionsEnum.EmailConfirmed
-                          )
-                        }
-                        disableRipple
-                      >
-                        <ListItemIcon>
-                          <MarkEmailReadOutlinedIcon
-                            sx={{ color: "darkgreen" }}
-                          />
-                        </ListItemIcon>
-                        <ListItemText>Email Confirmed</ListItemText>
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() =>
-                          handleSelectedAction(
-                            UserBulkActionsEnum.EmailNotConfirmed
-                          )
-                        }
-                        disableRipple
-                      >
-                        <ListItemIcon>
-                          <UnsubscribeIcon sx={{ color: "darkgreen" }} />
-                        </ListItemIcon>
-                        <ListItemText>Email Not Confirmed</ListItemText>
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() =>
-                          handleSelectedAction(UserBulkActionsEnum.LockUser)
-                        }
-                        disableRipple
-                      >
-                        <ListItemIcon>
-                          <LockOutlinedIcon sx={{ color: "darkred" }} />
-                        </ListItemIcon>
-                        <ListItemText>Lock</ListItemText>
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() =>
-                          handleSelectedAction(UserBulkActionsEnum.UnlockUser)
-                        }
-                        disableRipple
-                      >
-                        <ListItemIcon>
-                          <LockOpenOutlinedIcon sx={{ color: "darkgreen" }} />
-                        </ListItemIcon>
-                        <ListItemText>Unlock</ListItemText>
-                      </MenuItem>
-                      <MenuItem
-                        onClick={() =>
-                          handleSelectedAction(UserBulkActionsEnum.Delete)
-                        }
-                        disableRipple
-                      >
-                        <ListItemIcon>
-                          <DeleteOutlineOutlinedIcon
-                            sx={{ color: "darkred" }}
-                          />
-                        </ListItemIcon>
-                        <ListItemText>Delete</ListItemText>
-                      </MenuItem>
-                    </Menu>
-                  </Grid>
-                </Grid>
+                </AppPaper>
               </Grid>
 
-              <Grid item md={12} xs={12} sm={12}>
-                {isTableInfoLoading ? (
-                  <Skeleton height={150} />
-                ) : (
-                  <AppDataGrid
-                    columnsToHide={{
-                      id: false,
-                    }}
-                    records={usersData}
-                    columns={columns}
-                    totalRecords={data?.data?.totalItems ?? 0}
-                    isFetching={isFetching}
-                    paginationState={paginationModel}
-                    setPaginationState={setPaginationModel}
-                    setRowId={(row) => row.resourceAlias}
-                    disableRowSelectionOnClick={true}
-                    selectedRows={selectedAction.users}
-                    onRowSelectionModelChange={onUserSelected}
-                    hasNextPage={data?.data?.isNextPage ?? false}
-                  />
-                )}
+              <Grid size={{ sm: 12 }}>
+                <AppPaper>
+                  {isTableInfoLoading ? (
+                    <Skeleton height={150} />
+                  ) : (
+                    <AppDataGrid
+                      columnsToHide={{
+                        id: false,
+                      }}
+                      records={usersData}
+                      columns={columns}
+                      totalRecords={data?.data?.totalItems ?? 0}
+                      isFetching={isFetching}
+                      paginationState={paginationModel}
+                      setPaginationState={setPaginationModel}
+                      setRowId={(row) => row.resourceAlias}
+                      disableRowSelectionOnClick={true}
+                      selectedRows={selectedAction.users}
+                      onRowSelectionModelChange={onUserSelected}
+                      hasNextPage={data?.data?.isNextPage ?? false}
+                    />
+                  )}
+                </AppPaper>
               </Grid>
             </Grid>
-
             <AppModal
               modalTitle={pageActionsState.title}
               show={pageActionsState.visible}
@@ -838,9 +837,7 @@ const ManageUsers = () => {
               handleOk={handleOk}
               handleClose={handleModalClose}
             >
-              <AppLazyLoader>
-                {getActionView(pageActionsState.actionId)}
-              </AppLazyLoader>
+              <>{getActionView(pageActionsState.actionId)}</>
             </AppModal>
 
             <AppModal
@@ -850,7 +847,7 @@ const ManageUsers = () => {
               handleOk={onConfirmBulkAction}
               handleClose={resetBulkActionModalState}
             >
-              <AppLazyLoader>{selectedAction.popup.message}</AppLazyLoader>
+              <>{selectedAction.popup.message}</>
             </AppModal>
           </>
         }

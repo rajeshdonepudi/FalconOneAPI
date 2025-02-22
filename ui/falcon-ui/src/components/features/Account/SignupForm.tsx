@@ -13,9 +13,9 @@ import Typography from "@mui/material/Typography";
 import { useFormik } from "formik";
 import FormHelperText from "@mui/material/FormHelperText";
 import Paper from "@mui/material/Paper";
-import { LoadingButton } from "@mui/lab";
 import SignupValidationSchema from "@/validation-schemes/Account/SignupValidationScheme";
 import AppConstants from "@/constants/constants";
+import { Button } from "@mui/material";
 
 const SignupForm = (props: any) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -234,13 +234,13 @@ const SignupForm = (props: any) => {
                     Forgot password ?
                   </Link>
                 </Stack>
-                <LoadingButton
+                <Button
                   loading={props?.submissionState}
                   type="submit"
                   variant="contained"
                 >
                   Signup
-                </LoadingButton>
+                </Button>
               </Stack>
             </form>
           </Paper>

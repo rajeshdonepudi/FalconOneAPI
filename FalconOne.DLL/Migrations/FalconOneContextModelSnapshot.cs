@@ -369,54 +369,6 @@ namespace FalconOne.DAL.Migrations
                     b.ToTable("ExpenseCategories");
                 });
 
-            modelBuilder.Entity("FalconOne.Models.Entities.Mails.EntityTag", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CreatedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("LastUpdatedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("TagId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("DeletedByUserId");
-
-                    b.HasIndex("LastUpdatedByUserId");
-
-                    b.HasIndex("TagId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("EntityTag");
-                });
-
             modelBuilder.Entity("FalconOne.Models.Entities.Mails.Mail", b =>
                 {
                     b.Property<Guid>("Id")
@@ -472,48 +424,6 @@ namespace FalconOne.DAL.Migrations
                     b.HasIndex("SenderId");
 
                     b.ToTable("Mails");
-                });
-
-            modelBuilder.Entity("FalconOne.Models.Entities.Mails.Tag", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("CreatedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("DeletedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid?>("LastUpdatedByUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("DeletedByUserId");
-
-                    b.HasIndex("LastUpdatedByUserId");
-
-                    b.ToTable("Tag");
                 });
 
             modelBuilder.Entity("FalconOne.Models.Entities.QuestionAndAnswer.Answer", b =>
@@ -953,6 +863,108 @@ namespace FalconOne.DAL.Migrations
                     b.ToTable("UserSecurityGroups");
                 });
 
+            modelBuilder.Entity("FalconOne.Models.Entities.Tags.EntityTag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeletedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LastUpdatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TagId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("DeletedByUserId");
+
+                    b.HasIndex("LastUpdatedByUserId");
+
+                    b.HasIndex("TagId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("EntityTag");
+                });
+
+            modelBuilder.Entity("FalconOne.Models.Entities.Tags.Tag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CreatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("CreatedFrom")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("DeletedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("LastUpdatedByUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NormalizedName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("DeletedByUserId");
+
+                    b.HasIndex("LastUpdatedByUserId");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique();
+
+                    b.ToTable("Tag");
+                });
+
             modelBuilder.Entity("FalconOne.Models.Entities.Tenants.Setting", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1017,7 +1029,7 @@ namespace FalconOne.DAL.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("CONVERT(NVARCHAR(max), 20250130171435072) + '-FALO_TEN' + CAST([AccountId] AS NVARCHAR(max))");
+                        .HasComputedColumnSql("CONVERT(NVARCHAR(max), 20250221193607101) + '-FALO_TEN' + CAST([AccountId] AS NVARCHAR(max))");
 
                     b.Property<int>("AccountId")
                         .ValueGeneratedOnAdd()
@@ -1271,7 +1283,7 @@ namespace FalconOne.DAL.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("nvarchar(max)")
-                        .HasComputedColumnSql("CONVERT(NVARCHAR(max), 20250130171435072) + '-FALO_USR' + CAST([ResourceId] AS NVARCHAR(max))");
+                        .HasComputedColumnSql("CONVERT(NVARCHAR(max), 20250221193607101) + '-FALO_USR' + CAST([ResourceId] AS NVARCHAR(max))");
 
                     b.Property<int>("ResourceId")
                         .ValueGeneratedOnAdd()
@@ -1722,45 +1734,6 @@ namespace FalconOne.DAL.Migrations
                     b.Navigation("LastUpdatedByUser");
                 });
 
-            modelBuilder.Entity("FalconOne.Models.Entities.Mails.EntityTag", b =>
-                {
-                    b.HasOne("FalconOne.Models.Entities.Users.User", "CreatedByUser")
-                        .WithMany("EntityTagsCreated")
-                        .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("FalconOne.Models.Entities.Users.User", "DeletedByUser")
-                        .WithMany("EntityTagsDeleted")
-                        .HasForeignKey("DeletedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("FalconOne.Models.Entities.Users.User", "LastUpdatedByUser")
-                        .WithMany("EntityTagsUpdated")
-                        .HasForeignKey("LastUpdatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("FalconOne.Models.Entities.Mails.Tag", "Tag")
-                        .WithMany("EntityTags")
-                        .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("FalconOne.Models.Entities.Users.User", "User")
-                        .WithMany("AssociatedTags")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedByUser");
-
-                    b.Navigation("DeletedByUser");
-
-                    b.Navigation("LastUpdatedByUser");
-
-                    b.Navigation("Tag");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("FalconOne.Models.Entities.Mails.Mail", b =>
                 {
                     b.HasOne("FalconOne.Models.Entities.Users.User", "CreatedByUser")
@@ -1790,30 +1763,6 @@ namespace FalconOne.DAL.Migrations
                     b.Navigation("LastUpdatedByUser");
 
                     b.Navigation("Sender");
-                });
-
-            modelBuilder.Entity("FalconOne.Models.Entities.Mails.Tag", b =>
-                {
-                    b.HasOne("FalconOne.Models.Entities.Users.User", "CreatedByUser")
-                        .WithMany("TagsCreated")
-                        .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("FalconOne.Models.Entities.Users.User", "DeletedByUser")
-                        .WithMany("TagsDeleted")
-                        .HasForeignKey("DeletedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("FalconOne.Models.Entities.Users.User", "LastUpdatedByUser")
-                        .WithMany("TagsUpdated")
-                        .HasForeignKey("LastUpdatedByUserId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("CreatedByUser");
-
-                    b.Navigation("DeletedByUser");
-
-                    b.Navigation("LastUpdatedByUser");
                 });
 
             modelBuilder.Entity("FalconOne.Models.Entities.QuestionAndAnswer.Answer", b =>
@@ -2076,6 +2025,69 @@ namespace FalconOne.DAL.Migrations
                     b.Navigation("SecurityGroup");
 
                     b.Navigation("TenantUser");
+                });
+
+            modelBuilder.Entity("FalconOne.Models.Entities.Tags.EntityTag", b =>
+                {
+                    b.HasOne("FalconOne.Models.Entities.Users.User", "CreatedByUser")
+                        .WithMany("EntityTagsCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("FalconOne.Models.Entities.Users.User", "DeletedByUser")
+                        .WithMany("EntityTagsDeleted")
+                        .HasForeignKey("DeletedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("FalconOne.Models.Entities.Users.User", "LastUpdatedByUser")
+                        .WithMany("EntityTagsUpdated")
+                        .HasForeignKey("LastUpdatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("FalconOne.Models.Entities.Tags.Tag", "Tag")
+                        .WithMany("EntityTags")
+                        .HasForeignKey("TagId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FalconOne.Models.Entities.Users.User", "User")
+                        .WithMany("AssociatedTags")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("CreatedByUser");
+
+                    b.Navigation("DeletedByUser");
+
+                    b.Navigation("LastUpdatedByUser");
+
+                    b.Navigation("Tag");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FalconOne.Models.Entities.Tags.Tag", b =>
+                {
+                    b.HasOne("FalconOne.Models.Entities.Users.User", "CreatedByUser")
+                        .WithMany("TagsCreated")
+                        .HasForeignKey("CreatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("FalconOne.Models.Entities.Users.User", "DeletedByUser")
+                        .WithMany("TagsDeleted")
+                        .HasForeignKey("DeletedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("FalconOne.Models.Entities.Users.User", "LastUpdatedByUser")
+                        .WithMany("TagsUpdated")
+                        .HasForeignKey("LastUpdatedByUserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("CreatedByUser");
+
+                    b.Navigation("DeletedByUser");
+
+                    b.Navigation("LastUpdatedByUser");
                 });
 
             modelBuilder.Entity("FalconOne.Models.Entities.Tenants.Setting", b =>
@@ -2390,11 +2402,6 @@ namespace FalconOne.DAL.Migrations
                     b.Navigation("Recipients");
                 });
 
-            modelBuilder.Entity("FalconOne.Models.Entities.Mails.Tag", b =>
-                {
-                    b.Navigation("EntityTags");
-                });
-
             modelBuilder.Entity("FalconOne.Models.Entities.QuestionAndAnswer.Question", b =>
                 {
                     b.Navigation("Answers");
@@ -2424,6 +2431,11 @@ namespace FalconOne.DAL.Migrations
                     b.Navigation("AssociatedPermissions");
 
                     b.Navigation("TenantUserSecurityGroups");
+                });
+
+            modelBuilder.Entity("FalconOne.Models.Entities.Tags.Tag", b =>
+                {
+                    b.Navigation("EntityTags");
                 });
 
             modelBuilder.Entity("FalconOne.Models.Entities.Tenants.Tenant", b =>

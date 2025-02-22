@@ -1,5 +1,5 @@
 import AppDataGrid from "@/components/ui-components/AppDataGrid";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import AppModal from "@/components/ui-components/AppModal";
 import { ExpenseManagementActions } from "@/enumerations/ExpenseManagement/ExpenseManagementActions";
 import { AppModalState } from "@/models/Common/ModalState";
@@ -9,8 +9,6 @@ import {
   useAddExpenseMutation,
   useDeleteExpenseMutation,
   useGetAllExpensesQuery,
-  useGetAllExpenseTypesQuery,
-  useLazyGetExpenseDetailsQuery,
   useUpdateExpenseMutation,
 } from "@/services/ExpenseManagement/ExpenseService";
 import { Button, IconButton, Stack, Tooltip, Typography } from "@mui/material";
@@ -18,7 +16,6 @@ import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { lazy, useCallback, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
 import { AddExpense } from "@/models/ExpenseManagement/AddExpense";
 import AppPage from "@/components/ui-components/AppPage";
 const EditOutlinedIcon = lazy(() => import("@mui/icons-material/EditOutlined"));
@@ -34,6 +31,7 @@ import AppSearchBar from "@/components/ui-components/AppSearchBar";
 import AppConstants from "@/constants/constants";
 import NavUtilities from "@/utilities/NavUtilities";
 import { BasicExpenseDetail } from "@/models/ExpenseManagement/BasicExpenseDetail";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const ViewUserExpenses = () => {
   const navigate = useNavigate();
@@ -243,11 +241,6 @@ const ViewUserExpenses = () => {
             <Typography variant="body2">
               {commonLocale("confirmDeleteExpense")}
             </Typography>
-            <AppLottieAnimation
-              width="8rem"
-              height="8rem"
-              lottieUrl="https://lottie.host/80c779f1-d486-4149-8ddc-c828bc4f8861/W3LxdBs2e6.json"
-            />
           </Stack>
         );
       case ExpenseManagementActions.ADD_EXPENSE:
@@ -311,7 +304,7 @@ const ViewUserExpenses = () => {
       }
       title="My Expenses"
       content={
-        <>
+        <AppPaper>
           <AppDataGrid
             columnsToHide={{ id: false }}
             records={expensesData}
@@ -337,11 +330,9 @@ const ViewUserExpenses = () => {
             handleOk={handleOk}
             handleClose={handleModalClose}
           >
-            <AppLazyLoader>
-              {getActionView(pageActionsState.actionId)}
-            </AppLazyLoader>
+            <>{getActionView(pageActionsState.actionId)}</>
           </AppModal>
-        </>
+        </AppPaper>
       }
     />
   );

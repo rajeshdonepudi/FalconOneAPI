@@ -1,4 +1,4 @@
-﻿using FalconOne.Models.Entities.Mails;
+﻿using FalconOne.Models.Entities.Tags;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -38,6 +38,17 @@ namespace FalconOne.Models.EntityConfiguration.Tags
     {
         public void Configure(EntityTypeBuilder<Tag> builder)
         {
+            builder.Property(x => x.NormalizedName)
+                   .IsRequired()
+                   .HasMaxLength(100);
+
+            builder.Property(x => x.Name)
+                   .IsRequired()
+                   .HasMaxLength(100);
+
+            builder.HasIndex(x => x.NormalizedName)
+                   .IsUnique();
+
             builder.HasMany(x => x.EntityTags)
                    .WithOne(x => x.Tag)
                    .HasForeignKey(x => x.TagId)

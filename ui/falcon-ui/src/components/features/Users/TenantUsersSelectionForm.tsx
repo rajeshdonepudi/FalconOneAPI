@@ -3,12 +3,12 @@ import AppConstants from "@/constants/constants";
 import { TenantUsersSelectionModel } from "@/models/Users/TenantUsersSelectionModel";
 import { selectAuth } from "@/store/Slices/authSlice";
 import TenantUsersSelectionValidationScheme from "@/validation-schemes/Users/TenantUsersSelectionValidationScheme";
-import { Grid } from "@mui/material";
 import { useFormik } from "formik";
 import { lazy, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 const Stack = lazy(() => import("@mui/material/Stack"));
+import Grid from "@mui/material/Grid2";
 
 const TenantUsersSelectionForm = (props: any) => {
   const { t: commonLocale } = useTranslation();
@@ -79,7 +79,7 @@ const TenantUsersSelectionForm = (props: any) => {
       >
         <form autoComplete="off" onSubmit={formik.handleSubmit}>
           <Grid container spacing={1.5} sx={{ minWidth: "300px" }}>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <AppAutoComplete
                 value={formik.values.users}
                 setValue={(values: any) => {

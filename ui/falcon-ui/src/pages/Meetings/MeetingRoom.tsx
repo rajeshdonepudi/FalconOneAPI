@@ -1,12 +1,12 @@
 import VideoCall from "@/components/features/Video/VideoCall";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import { useRef } from "react";
 
 const MeetingRoom = () => {
   return (
-    <AppLazyLoader>
+    <>
       <VideoCall />
-    </AppLazyLoader>
+    </>
   );
 };
 

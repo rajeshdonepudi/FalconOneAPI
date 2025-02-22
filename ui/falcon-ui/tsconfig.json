@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "baseUrl": ".",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
@@ -39,7 +40,6 @@
       "@hooks": ["./src/hooks/*"]
     }
   },
-  "baseUrl": ".",
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

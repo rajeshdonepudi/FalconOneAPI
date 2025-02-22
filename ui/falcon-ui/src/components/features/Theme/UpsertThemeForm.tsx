@@ -1,5 +1,6 @@
 import fontStyles from "@/constants/font-styles";
 import MenuProps from "@/constants/menu-props";
+import Grid from "@mui/material/Grid2";
 import { ThemePreferenceEnum } from "@/enumerations/Theme/ThemePreferenceEnum";
 import StringUtilities from "@/utilities/StringUtilities";
 import {
@@ -10,9 +11,7 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
-  Grid,
   InputLabel,
-  ListItemText,
   MenuItem,
   OutlinedInput,
   Radio,
@@ -22,12 +21,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const UpsertThemeForm = (props: any) => {
   return (
     <form onSubmit={props.formik.handleSubmit}>
       <Grid container spacing={1.5}>
-        <Grid item md={6} sm={12} xs={12}>
+        <Grid size={6}>
           <Stack gap={1}>
             <FormLabel>Primary Color</FormLabel>
             <TextField
@@ -47,7 +47,7 @@ const UpsertThemeForm = (props: any) => {
           </Stack>
         </Grid>
 
-        <Grid item md={6} sm={12} xs={12}>
+        <Grid size={6}>
           <Stack gap={1}>
             <FormLabel>Secondary Color</FormLabel>
             <TextField
@@ -65,9 +65,9 @@ const UpsertThemeForm = (props: any) => {
             />
           </Stack>
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Grid container spacing={0.8}>
-            <Grid item xs={12} md={6}>
+            <Grid size={6}>
               <Stack>
                 <FormLabel>Primary Color</FormLabel>
                 <Typography variant="body2">
@@ -81,7 +81,7 @@ const UpsertThemeForm = (props: any) => {
                 </Typography>
               </Stack>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid size={6}>
               <Stack>
                 <Stack>
                   <FormLabel>Secondary Color</FormLabel>
@@ -100,10 +100,10 @@ const UpsertThemeForm = (props: any) => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={12} sm={12} xs={12}>
+        <Grid size={12}>
           <Divider />
         </Grid>
-        <Grid item md={12} sm={12} xs={12}>
+        <Grid size={12}>
           <FormControl sx={{ width: "100%" }}>
             <InputLabel id="font-family-label">Font Family</InputLabel>
             <Select
@@ -117,7 +117,7 @@ const UpsertThemeForm = (props: any) => {
             >
               {Object.keys(fontStyles).map((key: any) => (
                 <MenuItem key={key} value={Object(fontStyles)[key]}>
-                  <Card sx={{ width: "100%" }}>
+                  <Card>
                     <CardContent>
                       <Typography
                         sx={{ fontSize: 14 }}
@@ -156,10 +156,10 @@ const UpsertThemeForm = (props: any) => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item md={12} sm={12} xs={12}>
+        <Grid size={12}>
           <Divider />
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <FormControl>
             <FormLabel id="demo-radio-buttons-group-label">Theme</FormLabel>
             <RadioGroup
@@ -199,7 +199,7 @@ const UpsertThemeForm = (props: any) => {
             </RadioGroup>
           </FormControl>
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <FormControlLabel
             control={
               <Checkbox
@@ -212,7 +212,7 @@ const UpsertThemeForm = (props: any) => {
             label={<Typography variant="body2">Make Primary</Typography>}
           />
         </Grid>
-        {/* <Grid item md={12}>
+        {/* <Grid md={12}>
             <AppButton
               style={{ width: "100%" }}
               size="large"

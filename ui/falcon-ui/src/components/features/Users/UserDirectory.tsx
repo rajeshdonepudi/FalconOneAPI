@@ -2,7 +2,6 @@ import {
   Avatar,
   Button,
   Chip,
-  Grid,
   IconButton,
   ListItemIcon,
   Menu,
@@ -20,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import { lazy, useCallback, useMemo, useRef, useState } from "react";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import { FilterUserDirectory } from "@/models/Users/FilterUserDirectory";
 import { UpsertUserModel } from "@/models/Users/UpsertUserModel";
 import {
@@ -53,7 +52,6 @@ import { useTranslation } from "react-i18next";
 import { UserActions } from "@/enumerations/Users/user-actions.enum";
 import { toast } from "react-toastify";
 import UpsertUserForm from "./UpsertUserForm";
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
 import AppModal from "@/components/ui-components/AppModal";
 import { TakeUserBulkAction } from "@/models/Users/TakeUserBulkActionModel";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -67,6 +65,7 @@ import { useNavigate } from "react-router-dom";
 import NavUtilities from "@/utilities/NavUtilities";
 import AppPage from "@/components/ui-components/AppPage";
 import AppConstants from "@/constants/constants";
+import Grid from "@mui/material/Grid2";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 4;
@@ -234,11 +233,6 @@ const UserDirectory = () => {
                 "Are you completely sure you want to say goodbye to this user? Just a friendly reminder that this action can't be reversed."
               }
             </Typography>
-            <AppLottieAnimation
-              width="8rem"
-              height="8rem"
-              lottieUrl="https://lottie.host/80c779f1-d486-4149-8ddc-c828bc4f8861/W3LxdBs2e6.json"
-            />
           </Stack>
         );
       case UserActions.ADD_USER:
@@ -632,11 +626,11 @@ const UserDirectory = () => {
         </Stack>
       }
       content={
-        <AppLazyLoader>
+        <>
           <Grid container spacing={AppConstants.layout.StandardSpacing}>
-            <Grid item md={12} sm={12}>
+            <Grid size={{ md: 12 }}>
               <Grid container spacing={0.8}>
-                <Grid item md={8} xs={12}>
+                <Grid size={{ md: 8 }}>
                   {isLoading ? (
                     <Skeleton height={60} />
                   ) : (
@@ -652,7 +646,7 @@ const UserDirectory = () => {
                     />
                   )}
                 </Grid>
-                <Grid item md={3} xs={12}>
+                <Grid size={{ md: 3 }}>
                   {isLoading ? (
                     <Skeleton height={60} />
                   ) : (
@@ -687,7 +681,7 @@ const UserDirectory = () => {
                     </FormControl>
                   )}
                 </Grid>
-                <Grid item md={1} xs={2}>
+                <Grid size={{ md: 1 }}>
                   {isLoading ? (
                     <Skeleton height={60} />
                   ) : (
@@ -799,12 +793,12 @@ const UserDirectory = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={12} sm={12}>
+            <Grid size={{ md: 12 }}>
               {isLoading ? (
                 <Skeleton height={250} />
               ) : (
                 <Grid container>
-                  <Grid item md={12} xs={12} sm={12}>
+                  <Grid size={{ xs: 12, md: 12 }}>
                     <AppDataGrid
                       columnsToHide={{
                         id: false,
@@ -842,9 +836,7 @@ const UserDirectory = () => {
             handleOk={handleOk}
             handleClose={handleModalClose}
           >
-            <AppLazyLoader>
-              {getActionView(pageActionsState.actionId)}
-            </AppLazyLoader>
+            <>{getActionView(pageActionsState.actionId)}</>
           </AppModal>
 
           <AppModal
@@ -854,9 +846,9 @@ const UserDirectory = () => {
             handleOk={onConfirmBulkAction}
             handleClose={resetBulkActionModalState}
           >
-            <AppLazyLoader>{selectedAction.popup.message}</AppLazyLoader>
+            <>{selectedAction.popup.message}</>
           </AppModal>
-        </AppLazyLoader>
+        </>
       }
     />
   );

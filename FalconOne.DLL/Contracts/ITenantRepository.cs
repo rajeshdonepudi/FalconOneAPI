@@ -42,5 +42,6 @@ namespace FalconOne.DAL.Contracts
         Task<TenantManagementDashboardInfoDto> GetTenantManagementDashboardInfoAsync(CancellationToken cancellationToken);
         Task<IEnumerable<KeyValuePair<string, Guid>>> GetTenantsLookupForDirectoryAsync(string? searchTerm, CancellationToken cancellationToken);
         Task<TenantDetailsDto> GetTenantDetailsAsync(string accountAlias, CancellationToken cancellationToken);
+        Task<IEnumerable<TenantBasicDetailDto>> GetTenantBasicDetailsAsync(List<Guid> tenantIds, CancellationToken cancellationToken);
     }
 }

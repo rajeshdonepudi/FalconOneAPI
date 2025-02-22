@@ -14,8 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Outlet } from "react-router-dom";
-import Grid from "@mui/material/Grid";
-
+import Grid from "@mui/material/Grid2";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -114,8 +113,7 @@ export default function LandingAppBar(props: Props) {
             alignItems: "center",
             justifyContent: "center",
           }}
-          item
-          xs={12}
+          size={12}
         >
           <Outlet />
         </Grid>

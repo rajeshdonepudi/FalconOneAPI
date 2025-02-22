@@ -265,18 +265,10 @@ export default function DashboardLayout() {
           menuId: 10,
         },
         {
-          url: "/secure/security/permissions",
-
-          icon: (
-            <KeyOutlinedIcon
-              sx={{
-                minWidth: 0,
-                justifyContent: "center",
-              }}
-            />
-          ),
-          displayText: "Permissions",
-          menuId: 14,
+          url: "/secure/security/permissions-pool",
+          displayText: "Permissions Pool",
+          icon: <HiveOutlinedIcon />,
+          menuId: 12,
         },
       ],
     },
@@ -292,10 +284,18 @@ export default function DashboardLayout() {
           menuId: 11,
         },
         {
-          url: "/secure/security/permissions-pool",
-          displayText: "Permissions Pool",
-          icon: <HiveOutlinedIcon />,
-          menuId: 12,
+          url: "/secure/security/permissions",
+
+          icon: (
+            <KeyOutlinedIcon
+              sx={{
+                minWidth: 0,
+                justifyContent: "center",
+              }}
+            />
+          ),
+          displayText: "Permissions",
+          menuId: 14,
         },
         {
           url: "/secure/security/security-groups",
@@ -315,19 +315,6 @@ export default function DashboardLayout() {
           displayText: "Trained Models",
           icon: <ModelTrainingIcon />,
           menuId: 14,
-        },
-      ],
-    },
-    {
-      groupId: 8,
-      groupName: "Domain",
-      icon: <DomainIcon />,
-      items: [
-        {
-          url: "/secure/domain/info",
-          displayText: "View Info",
-          icon: <LanguageOutlinedIcon />,
-          menuId: 15,
         },
       ],
     },

@@ -1,4 +1,4 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import {
   useGetSecurityGroupInfoQuery,
   useGetSecurityGroupPermissionsQuery,
@@ -8,7 +8,6 @@ import {
   Button,
   Card,
   CardContent,
-  Grid,
   Skeleton,
   Stack,
   Typography,
@@ -19,6 +18,8 @@ import DateTimeUtilities from "@/utilities/DateTimeUtilities";
 import ViewSecurityGroupUsers from "./ViewSecurityGroupUsers";
 import AppAccordion from "@/components/ui-components/AppAccordion";
 import AppConstants from "@/constants/constants";
+import Grid from "@mui/material/Grid2";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const ViewSecurityGroupDetails = () => {
   const [searchParams] = useSearchParams();
@@ -30,10 +31,10 @@ const ViewSecurityGroupDetails = () => {
   );
   return (
     <>
-      <AppLazyLoader>
+      <>
         <Stack gap={1.5}>
           <Grid container>
-            <Grid item md={12}>
+            <Grid size={12}>
               <Stack
                 direction={"row"}
                 flexWrap={"wrap"}
@@ -58,11 +59,11 @@ const ViewSecurityGroupDetails = () => {
                 )}
               </Stack>
             </Grid>
-            <Grid item md={12}>
-              <Card variant="outlined">
+            <Grid size={12}>
+              <AppPaper>
                 <CardContent>
                   <Grid container spacing={AppConstants.layout.StandardSpacing}>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={2}>
                       <Stack>
                         {isSecurityGroupInfoLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -78,7 +79,7 @@ const ViewSecurityGroupDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={2}>
                       <Stack>
                         {isSecurityGroupInfoLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -102,7 +103,7 @@ const ViewSecurityGroupDetails = () => {
                       </Stack>
                     </Grid>
 
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={2}>
                       <Stack>
                         {isSecurityGroupInfoLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -121,7 +122,7 @@ const ViewSecurityGroupDetails = () => {
                       </Stack>
                     </Grid>
 
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={2}>
                       <Stack>
                         {isSecurityGroupInfoLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -137,7 +138,7 @@ const ViewSecurityGroupDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={2}>
                       <Stack>
                         {isSecurityGroupInfoLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -155,11 +156,11 @@ const ViewSecurityGroupDetails = () => {
                     </Grid>
                   </Grid>
                 </CardContent>
-              </Card>
+              </AppPaper>
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item md={12}>
+            <Grid size={12}>
               <Stack
                 direction={"row"}
                 flexWrap={"wrap"}
@@ -170,8 +171,8 @@ const ViewSecurityGroupDetails = () => {
                 <Typography variant="h6">Associated Permissions</Typography>
               </Stack>
             </Grid>
-            <Grid item md={12}>
-              <Card variant="outlined">
+            <Grid size={12}>
+              <AppPaper>
                 <CardContent>
                   {userPermissions?.data.map((g) => {
                     return (
@@ -185,7 +186,7 @@ const ViewSecurityGroupDetails = () => {
                             >
                               {g.permissions.map((p) => {
                                 return (
-                                  <Grid md={4} item>
+                                  <Grid size={4}>
                                     <Typography variant="body2">{p}</Typography>
                                   </Grid>
                                 );
@@ -197,16 +198,16 @@ const ViewSecurityGroupDetails = () => {
                     );
                   })}
                 </CardContent>
-              </Card>
+              </AppPaper>
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item md={12}>
+            <Grid size={12}>
               <ViewSecurityGroupUsers />
             </Grid>
           </Grid>
         </Stack>
-      </AppLazyLoader>
+      </>
     </>
   );
 };

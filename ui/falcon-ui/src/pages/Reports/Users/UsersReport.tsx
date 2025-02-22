@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import Paper from "@mui/material/Paper";
-import AppLazyLoader from "@ui-components/AppLazyLoader";
 import { useGetUsersCreatedByYearQuery } from "@services/User/UserManagementService";
 import { Button, Stack } from "@mui/material";
 import {
@@ -20,10 +19,10 @@ import {
 } from "recharts";
 import AppPage from "@/components/ui-components/AppPage";
 import NavUtilities from "@/utilities/NavUtilities";
-const Grid = lazy(() => import("@mui/material/Grid"));
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import { useNavigate } from "react-router-dom";
 import AppLoader from "@/components/ui-components/AppLoader";
+import Grid from "@mui/material/Grid2";
 
 const UsersReport = () => {
   /****
@@ -53,7 +52,7 @@ const UsersReport = () => {
 
   return (
     <>
-      <AppLazyLoader>
+      <>
         <Button
           onClick={() => navigate(NavUtilities.ToSecureArea("reports"))}
           startIcon={<ArrowBackOutlinedIcon />}
@@ -61,7 +60,7 @@ const UsersReport = () => {
           Back to Reports
         </Button>
         <Grid container spacing={0.8}>
-          <Grid item md={12} xs={12}>
+          <Grid size={{ xs: 12, md: 12 }}>
             <Paper>
               {isLoading ? (
                 <Stack alignItems={"center"} justifyContent={"center"}>
@@ -106,7 +105,7 @@ const UsersReport = () => {
               )}
             </Paper>
           </Grid>
-          <Grid item md={6} xs={12}>
+          <Grid size={6}>
             <Paper>
               {isLoading ? (
                 <Stack alignItems={"center"} justifyContent={"center"}>
@@ -152,7 +151,7 @@ const UsersReport = () => {
               )}
             </Paper>
           </Grid>
-          <Grid item md={6} xs={12}>
+          <Grid size={6}>
             <Paper>
               {isLoading ? (
                 <Stack alignItems={"center"} justifyContent={"center"}>
@@ -197,7 +196,7 @@ const UsersReport = () => {
             </Paper>
           </Grid>
         </Grid>
-      </AppLazyLoader>
+      </>
     </>
   );
 };

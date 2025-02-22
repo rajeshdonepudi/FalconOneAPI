@@ -1,6 +1,6 @@
 import ThemesList from "@/components/features/Theme/ThemesList";
 import UpsertThemeForm from "@/components/features/Theme/UpsertThemeForm";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import AppModal from "@/components/ui-components/AppModal";
 import { UpsertSiteTheme } from "@/models/Theme/UpsertSiteTheme";
 import {
@@ -21,8 +21,8 @@ import { ThemePreferenceEnum } from "@/enumerations/Theme/ThemePreferenceEnum";
 import AddThemeValidationScheme from "@/validation-schemes/Site-settings/AddThemeValidationScheme";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
 import AppConstants from "@/constants/constants";
+import AppPage from "@/components/ui-components/AppPage";
 const pageActions = {
   ADD_THEME: "ADD_THEME",
   UPDATE_THEME: "UPDATE_THEME",
@@ -212,57 +212,63 @@ const ManageSiteTheme = () => {
   };
 
   return (
-    <AppLazyLoader>
-      <Stack
-        direction="row"
-        justifyContent="flex-end"
-        alignItems="center"
-        spacing={AppConstants.layout.StandardSpacing}
-      >
-        <Stack alignItems="flex-end" direction={"row"} spacing={0.8}>
-          <Button
-            onClick={onAddThemeClicked}
-            variant="contained"
-            sx={{ width: "fit-content" }}
-            startIcon={<AddOutlinedIcon />}
-          >
-            {`${commonLocale("add")} ${commonLocale("theme")}`}
-          </Button>
-          <Button
-            onClick={() => dispatchNewTheme()}
-            variant="outlined"
-            sx={{ width: "fit-content" }}
-            startIcon={<RefreshOutlinedIcon />}
-          >
-            {`Refresh theme`}
-          </Button>
+    <AppPage
+      title="Themes"
+      rightHeaderActions={
+        <Stack
+          direction="row"
+          justifyContent="flex-end"
+          alignItems="center"
+          spacing={AppConstants.layout.StandardSpacing}
+        >
+          <Stack alignItems="flex-end" direction={"row"} spacing={0.8}>
+            <Button
+              onClick={onAddThemeClicked}
+              variant="contained"
+              sx={{ width: "fit-content" }}
+              startIcon={<AddOutlinedIcon />}
+            >
+              {`${commonLocale("add")} ${commonLocale("theme")}`}
+            </Button>
+            <Button
+              onClick={() => dispatchNewTheme()}
+              variant="outlined"
+              sx={{ width: "fit-content" }}
+              startIcon={<RefreshOutlinedIcon />}
+            >
+              {`Refresh theme`}
+            </Button>
+          </Stack>
         </Stack>
-      </Stack>
-      {Array.from(themes?.data ?? []).length > 0 ? (
-        <ThemesList
-          onDeleteTheme={onDeleteTheme}
-          onEditTheme={onEditTheme}
-          themes={themes?.data ?? []}
-        />
-      ) : (
-        <Stack alignItems={"center"} justifyContent={"center"}>
-          <AppLottieAnimation lottieUrl="https://lottie.host/3f501988-c5c3-402f-92cb-dba091cb686b/Y3RKncEKXF.json" />
-          <Typography sx={{ position: "absolute" }} variant="body2">
-            No Themes Available
-          </Typography>
-        </Stack>
-      )}
+      }
+      content={
+        <>
+          {Array.from(themes?.data ?? []).length > 0 ? (
+            <ThemesList
+              onDeleteTheme={onDeleteTheme}
+              onEditTheme={onEditTheme}
+              themes={themes?.data ?? []}
+            />
+          ) : (
+            <Stack alignItems={"center"} justifyContent={"center"}>
+              <Typography sx={{ position: "absolute" }} variant="body2">
+                No Themes Available
+              </Typography>
+            </Stack>
+          )}
 
-      <AppModal
-        modalTitle={getPageActionInfo()?.title}
-        show={pageActionsState.popup.visible}
-        okButtonText={getPageActionInfo()?.okButtonText}
-        handleOk={onConfirm}
-        handleClose={onCancel}
-      >
-        <AppLazyLoader>{getPageActionInfo()?.view}</AppLazyLoader>
-      </AppModal>
-    </AppLazyLoader>
+          <AppModal
+            modalTitle={getPageActionInfo()?.title}
+            show={pageActionsState.popup.visible}
+            okButtonText={getPageActionInfo()?.okButtonText}
+            handleOk={onConfirm}
+            handleClose={onCancel}
+          >
+            <>{getPageActionInfo()?.view}</>
+          </AppModal>
+        </>
+      }
+    ></AppPage>
   );
 };
 

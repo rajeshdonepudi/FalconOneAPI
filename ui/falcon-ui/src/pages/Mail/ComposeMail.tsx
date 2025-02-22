@@ -1,5 +1,5 @@
 import NewMail from "@/components/features/Mails/NewMail";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import { useSendNewMailMutation } from "@/services/Mail/MailService";
 import NavUtilities from "@/utilities/NavUtilities";
 import { Backdrop, Button, CircularProgress } from "@mui/material";
@@ -29,7 +29,7 @@ const ComposeMail = () => {
   };
 
   return (
-    <AppLazyLoader>
+    <>
       <Button
         onClick={() => navigate(-1)}
         startIcon={<ArrowBackOutlinedIcon />}
@@ -44,7 +44,7 @@ const ComposeMail = () => {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-    </AppLazyLoader>
+    </>
   );
 };
 

@@ -12,6 +12,7 @@ const fontStyles = {
   Orbitron: "Orbitron",
   Honk: "Honk",
   Mulish: "Mulish",
+  Outfit: "Outfit",
 };
 
 export default fontStyles;

@@ -2,8 +2,8 @@ import AppConstants from "@/constants/constants";
 import { AddExpenseCategory } from "@/models/ExpenseManagement/AddExpenseCategory";
 import { UpdateExpenseCategory } from "@/models/ExpenseManagement/UpdateExpenseCategory";
 import { UpsertExpenseCategoryValidationScheme } from "@/validation-schemes/ExpenseManagement/UpsertExpenseCategoryValidationScheme";
-import { Grid } from "@mui/material";
 import { useFormik } from "formik";
+import Grid from "@mui/material/Grid2";
 import { lazy, useImperativeHandle } from "react";
 import { useTranslation } from "react-i18next";
 const Stack = lazy(() => import("@mui/material/Stack"));
@@ -44,7 +44,7 @@ const UpsertExpenseCategoryForm = (props: any) => {
           style={{ width: "100%" }}
         >
           <Grid container spacing={1.5}>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 id="name"
                 name="name"
@@ -60,7 +60,7 @@ const UpsertExpenseCategoryForm = (props: any) => {
               />
             </Grid>
 
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 id="description"
                 name="description"

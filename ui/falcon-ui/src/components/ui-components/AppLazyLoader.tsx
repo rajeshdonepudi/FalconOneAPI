@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from "@mui/material";
 import { Suspense } from "react";
 
-const AppLazyLoader = (props: any) => {
+const AppLoader = (props: any) => {
   return (
     <Suspense
       fallback={
@@ -21,4 +21,4 @@ const AppLazyLoader = (props: any) => {
   );
 };
 
-export default AppLazyLoader;
+export default AppLoader;

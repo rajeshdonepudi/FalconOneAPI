@@ -4,7 +4,8 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  Grid,
+  Chip,
+  Divider,
   IconButton,
   Stack,
   Typography,
@@ -13,6 +14,8 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { SiteTheme } from "@/models/Theme/SiteTheme";
+import Grid from "@mui/material/Grid2";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const ThemesList = (props: {
   themes: SiteTheme[];
@@ -22,7 +25,11 @@ const ThemesList = (props: {
   return (
     <Grid container spacing={0.8}>
       {props.themes.map((x, index) => (
-        <Grid key={x.id} sx={{ height: "100%" }} item md={2}>
+        <Grid
+          key={x.id}
+          sx={{ height: "100%" }}
+          size={{ xl: 2, md: 3, sm: 12 }}
+        >
           <Card variant="outlined">
             <CardHeader
               action={
@@ -50,11 +57,17 @@ const ThemesList = (props: {
                     {x.primaryColor.toLocaleUpperCase()}
                   </Typography>
                 </Stack>
+                <Divider />
                 <Stack direction={"row"} justifyContent={"space-between"}>
                   <Typography variant="caption">Secondary</Typography>
                   <Typography variant="body2">
                     {x.secondaryColor.toLocaleUpperCase()}
                   </Typography>
+                </Stack>
+                <Divider />
+                <Stack direction={"row"} justifyContent={"space-between"}>
+                  <Typography variant="caption">Font Family</Typography>
+                  <Typography variant="body2">{x.fontFamily}</Typography>
                 </Stack>
               </Stack>
             </CardContent>

@@ -7,7 +7,7 @@ const DeleteOutlineOutlinedIcon = lazy(
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import MarkEmailReadOutlinedIcon from "@mui/icons-material/MarkEmailReadOutlined";
 const EditOutlinedIcon = lazy(() => import("@mui/icons-material/EditOutlined"));
-import AppLazyLoader from "@ui-components/AppLazyLoader";
+import AppLoader from "@ui-components/AppLoader";
 import AppModal from "@ui-components/AppModal";
 import { UserActions } from "@/enumerations/Users/user-actions.enum";
 import { AppModalState } from "@models/Common/ModalState";
@@ -48,7 +48,6 @@ import AppDataGrid from "@/components/ui-components/AppDataGrid";
 import { toast } from "react-toastify";
 import { UserBulkActionsEnum } from "@/enumerations/Users/user-bulk-action.enum";
 import { TakeUserBulkAction } from "@/models/Users/TakeUserBulkActionModel";
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
 import moment from "moment";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import NavUtilities from "@/utilities/NavUtilities";
@@ -64,9 +63,10 @@ const VerifiedUserOutlinedIcon = lazy(
   () => import("@mui/icons-material/VerifiedUserOutlined")
 );
 const Button = lazy(() => import("@mui/material/Button"));
-const Grid = lazy(() => import("@mui/material/Grid"));
 const Stack = lazy(() => import("@mui/material/Stack"));
 const Typography = lazy(() => import("@mui/material/Typography"));
+import Grid from "@mui/material/Grid2";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const ViewTenantUsers = () => {
   /****
@@ -372,11 +372,6 @@ const ViewTenantUsers = () => {
                 "Are you completely sure you want to say goodbye to this user? Just a friendly reminder that this action can't be reversed."
               }
             </Typography>
-            <AppLottieAnimation
-              width="8rem"
-              height="8rem"
-              lottieUrl="https://lottie.host/80c779f1-d486-4149-8ddc-c828bc4f8861/W3LxdBs2e6.json"
-            />
           </Stack>
         );
       case UserActions.ADD_USER:
@@ -557,9 +552,9 @@ const ViewTenantUsers = () => {
 
   return (
     <>
-      <AppLazyLoader>
+      <>
         <Grid container spacing={AppConstants.layout.StandardSpacing}>
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12, sm: 12 }}>
             <Stack
               direction={"row"}
               flexWrap={"wrap"}
@@ -580,10 +575,10 @@ const ViewTenantUsers = () => {
               )}
             </Stack>
           </Grid>
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12 }}>
             <Grid container spacing={0.8}>
-              <Grid item md={3} xs={12}>
-                <Card variant="outlined">
+              <Grid size={{ md: 2 }}>
+                <AppPaper>
                   <CardContent>
                     <Stack
                       direction={"row"}
@@ -611,10 +606,10 @@ const ViewTenantUsers = () => {
                       )}
                     </Typography>
                   </CardContent>
-                </Card>
+                </AppPaper>
               </Grid>
-              <Grid item md={3} xs={12}>
-                <Card variant="outlined">
+              <Grid size={12}>
+                <AppPaper>
                   <CardContent>
                     <Stack direction={"row"}>
                       <PermIdentityOutlinedIcon fontSize="small" />
@@ -638,10 +633,10 @@ const ViewTenantUsers = () => {
                       )}
                     </Typography>
                   </CardContent>
-                </Card>
+                </AppPaper>
               </Grid>
-              <Grid item md={3} xs={12}>
-                <Card variant="outlined">
+              <Grid size={12}>
+                <AppPaper>
                   <CardContent>
                     <Stack direction={"row"}>
                       <PersonOffOutlinedIcon fontSize="small" />
@@ -667,10 +662,10 @@ const ViewTenantUsers = () => {
                       )}
                     </Typography>
                   </CardContent>
-                </Card>
+                </AppPaper>
               </Grid>
-              <Grid item md={3} xs={12}>
-                <Card variant="outlined">
+              <Grid size={12}>
+                <AppPaper>
                   <CardContent>
                     <Stack direction={"row"}>
                       <VerifiedUserOutlinedIcon fontSize="small" />
@@ -694,10 +689,10 @@ const ViewTenantUsers = () => {
                       )}
                     </Typography>
                   </CardContent>
-                </Card>
+                </AppPaper>
               </Grid>
-              <Grid item md={3} xs={12}>
-                <Card variant="outlined">
+              <Grid size={12}>
+                <AppPaper>
                   <CardContent>
                     <Stack direction={"row"}>
                       <VerifiedUserOutlinedIcon fontSize="small" />
@@ -723,10 +718,10 @@ const ViewTenantUsers = () => {
                       )}
                     </Typography>
                   </CardContent>
-                </Card>
+                </AppPaper>
               </Grid>
-              <Grid item md={3} xs={12}>
-                <Card variant="outlined">
+              <Grid size={12}>
+                <AppPaper>
                   <CardContent>
                     <Stack direction={"row"}>
                       <VerifiedUserOutlinedIcon fontSize="small" />
@@ -750,14 +745,14 @@ const ViewTenantUsers = () => {
                       )}
                     </Typography>
                   </CardContent>
-                </Card>
+                </AppPaper>
               </Grid>
             </Grid>
           </Grid>
 
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12 }}>
             <Grid container spacing={0.8} alignItems={"center"}>
-              <Grid item md={11} sm={12} xs={12}>
+              <Grid size={12}>
                 {isTableInfoLoading ? (
                   <Skeleton height={60} />
                 ) : (
@@ -770,7 +765,7 @@ const ViewTenantUsers = () => {
                   />
                 )}
               </Grid>
-              <Grid item md={1} sm={12} xs={12}>
+              <Grid size={12}>
                 {isTableInfoLoading ? (
                   <Skeleton height={60} />
                 ) : (
@@ -882,7 +877,7 @@ const ViewTenantUsers = () => {
             </Grid>
           </Grid>
 
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12 }}>
             {isTableInfoLoading ? (
               <Skeleton height={150} />
             ) : (
@@ -921,9 +916,7 @@ const ViewTenantUsers = () => {
           handleOk={handleOk}
           handleClose={handleModalClose}
         >
-          <AppLazyLoader>
-            {getActionView(pageActionsState.actionId)}
-          </AppLazyLoader>
+          <>{getActionView(pageActionsState.actionId)}</>
         </AppModal>
 
         <AppModal
@@ -933,9 +926,9 @@ const ViewTenantUsers = () => {
           handleOk={onConfirmBulkAction}
           handleClose={resetBulkActionModalState}
         >
-          <AppLazyLoader>{selectedAction.popup.message}</AppLazyLoader>
+          <>{selectedAction.popup.message}</>
         </AppModal>
-      </AppLazyLoader>
+      </>
     </>
   );
 };

@@ -13,9 +13,10 @@ import { useEffect, useMemo } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import NavUtilities from "@/utilities/NavUtilities";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import AppAccordion from "@/components/ui-components/AppAccordion";
 import AppConstants from "@/constants/constants";
+import AppPaper from "@/components/ui-components/AppPaper";
 const ViewMail = () => {
   const { id } = useParams();
   const [getMailInfo, { data: response, isFetching }] =
@@ -49,12 +50,12 @@ const ViewMail = () => {
   };
 
   return (
-    <AppLazyLoader>
+    <>
       <Button onClick={goBackToMails} startIcon={<ArrowBackOutlinedIcon />}>
         Back to mails
       </Button>
 
-      <Card variant="outlined">
+      <AppPaper>
         <CardContent>
           <Stack
             marginBottom={2}
@@ -127,8 +128,8 @@ const ViewMail = () => {
             }}
           ></span>
         </CardContent>
-      </Card>
-    </AppLazyLoader>
+      </AppPaper>
+    </>
   );
 };
 

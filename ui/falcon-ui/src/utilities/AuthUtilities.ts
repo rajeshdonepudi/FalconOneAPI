@@ -1,4 +1,4 @@
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { LoginResponse } from "@models/Account/LoginResponse";
 
 const USER_SESSION_KEY: string = "FALCON_ONE_USER";
@@ -52,19 +52,20 @@ const getRefreshToken = () => {
 };
 
 const loginUser = (authResponse: LoginResponse) => {
-  localStorage.setItem(USER_SESSION_KEY, JSON.stringify({
-    email: authResponse.email,
-    accessToken: authResponse.accessToken,
-    refreshToken: authResponse.refreshToken,
-    id: authResponse.id,
-    lastName: authResponse.lastName,
-    firstName: authResponse.firstName,
-    tenants: authResponse.tenants
-  } as LoginResponse));
- // localStorage.setItem(USER_AVATAR_KEY, authResponse.profilePicture);
+  localStorage.setItem(
+    USER_SESSION_KEY,
+    JSON.stringify({
+      email: authResponse.email,
+      accessToken: authResponse.accessToken,
+      refreshToken: authResponse.refreshToken,
+      id: authResponse.id,
+      lastName: authResponse.lastName,
+      firstName: authResponse.firstName,
+      tenants: authResponse.tenants,
+    } as LoginResponse)
+  );
+  // localStorage.setItem(USER_AVATAR_KEY, authResponse.profilePicture);
 };
-
-
 
 const logoutUser = () => {
   localStorage.removeItem(USER_SESSION_KEY);

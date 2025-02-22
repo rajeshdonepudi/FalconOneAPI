@@ -11,7 +11,7 @@ namespace FalconeOne.BLL.Hubs.Common
         protected static ConcurrentDictionary<string, string> _connections = new ConcurrentDictionary<string, string>();
         protected readonly IUserLookupService _userLookupService;
         protected readonly ITenantProvider _tenantProvider;
-        private readonly ITokenValidationService _tokenValidationService;
+        private   readonly ITokenValidationService _tokenValidationService;
         protected Guid? UserId = null;
         protected Guid? TenantId = null;
 
@@ -73,7 +73,6 @@ namespace FalconeOne.BLL.Hubs.Common
 
             await base.OnConnectedAsync();
         }
-
 
         public override async Task OnDisconnectedAsync(Exception? exception)
         {

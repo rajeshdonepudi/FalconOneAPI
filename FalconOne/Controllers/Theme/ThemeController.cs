@@ -28,14 +28,14 @@ namespace FalconOne.API.Controllers.Theme
         }
 
         [HttpGet("all-themes")]
-        [FalconOneAuthorize(PermissionPool.Theme.VIEW_ALL_THEMES)]
+        [FalconOneAuthorize(PermissionPool.Theme_Managment.VIEW_ALL_THEMES)]
         public async Task<IActionResult> GetAllThemes(CancellationToken cancellationToken)
         {
             return Ok(await _themeService.GetThemesAsync(cancellationToken));
         }
 
         [HttpPost("add-theme")]
-        [FalconOneAuthorize(PermissionPool.Theme.CREATE_THEME)]
+        [FalconOneAuthorize(PermissionPool.Theme_Managment.CREATE_THEME)]
         public async Task<IActionResult> AddTheme(UpsertSiteThemeDto model, CancellationToken cancellationToken)
         {
             var result = await _themeService.AddThemeAsync(model, cancellationToken);
@@ -46,7 +46,7 @@ namespace FalconOne.API.Controllers.Theme
         }
 
         [HttpPatch("update-theme")]
-        [FalconOneAuthorize(PermissionPool.Theme.UPDATE_THEME)]
+        [FalconOneAuthorize(PermissionPool.Theme_Managment.UPDATE_THEME)]
         public async Task<IActionResult> UpdateTheme(UpsertSiteThemeDto model, CancellationToken cancellationToken)
         {
             var result = await _themeService.UpdateThemeAsync(model, cancellationToken);
@@ -57,7 +57,7 @@ namespace FalconOne.API.Controllers.Theme
         }
 
         [HttpDelete("delete-theme")]
-        [FalconOneAuthorize(PermissionPool.Theme.DELETE_THEME)]
+        [FalconOneAuthorize(PermissionPool.Theme_Managment.DELETE_THEME)]
         public async Task<IActionResult> DeleteTheme([FromQuery] Guid themeId, CancellationToken cancellationToken)
         {
             var result = await _themeService.DeleteThemeAsync(themeId, cancellationToken);

@@ -19,8 +19,8 @@ import { updateTheme } from "./store/Slices/themeSlice";
 import tinycolor from "tinycolor2";
 import { useLazyGetTenantInfoQuery } from "./services/Tenant/TenantService";
 import { setTenantInfo } from "./store/Slices/tenantSlice";
-import AppFalconOneLoader from "./components/ui-components/AppFalconOneLoader";
 import AppNoInternet from "./components/ui-components/AppNoInternet";
+import AppLoader from "./components/ui-components/AppLoader";
 
 const App = () => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -222,7 +222,7 @@ const App = () => {
           className="root-container"
         >
           <BrowserRouter>
-            <Suspense fallback={<AppFalconOneLoader />}>
+            <Suspense fallback={<AppLoader />}>
               {isOnline ? <AppRoutes /> : <AppNoInternet />}
             </Suspense>
           </BrowserRouter>

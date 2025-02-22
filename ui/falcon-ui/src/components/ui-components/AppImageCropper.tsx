@@ -1,11 +1,12 @@
 import ImageUtilities from "@/utilities/ImageUtilities";
-import { Grid, Slider, Stack } from "@mui/material";
+import { Slider, Stack } from "@mui/material";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import Cropper from "react-easy-crop";
 import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
 import ZoomOutOutlinedIcon from "@mui/icons-material/ZoomOutOutlined";
 import CropRotateOutlinedIcon from "@mui/icons-material/CropRotateOutlined";
 import AppConstants from "@/constants/constants";
+import Grid from "@mui/material/Grid2";
 
 const AppImageCropper = forwardRef((props: { image: string }, ref) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
@@ -47,9 +48,7 @@ const AppImageCropper = forwardRef((props: { image: string }, ref) => {
   return (
     <Grid container>
       <Grid
-        item
-        md={12}
-        xs={12}
+        size={12}
         sx={{ height: "50vh", width: "50vw", position: "relative" }}
       >
         <Cropper
@@ -65,7 +64,7 @@ const AppImageCropper = forwardRef((props: { image: string }, ref) => {
         />
       </Grid>
       <Grid container spacing={0.8}>
-        <Grid item xs={12} md={12}>
+        <Grid size={12}>
           <Stack
             spacing={AppConstants.layout.StandardSpacing}
             direction="row"
@@ -86,7 +85,7 @@ const AppImageCropper = forwardRef((props: { image: string }, ref) => {
             <ZoomInOutlinedIcon />
           </Stack>
         </Grid>
-        <Grid item xs={12} md={12}>
+        <Grid size={12}>
           <Stack
             spacing={AppConstants.layout.StandardSpacing}
             direction="row"

@@ -1,6 +1,6 @@
 export default interface MenuItem {
   url: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   displayText: string;
   menuId: number;
 }

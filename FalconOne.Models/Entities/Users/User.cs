@@ -4,6 +4,7 @@ using FalconOne.Models.Entities.Common;
 using FalconOne.Models.Entities.Mails;
 using FalconOne.Models.Entities.QuestionAndAnswer;
 using FalconOne.Models.Entities.Security;
+using FalconOne.Models.Entities.Tags;
 using FalconOne.Models.Entities.Tenants;
 using FalconOne.Models.EntityConfiguration.User;
 using FalconOne.Models.EntityContracts;

@@ -6,4 +6,5 @@ export default {
   tenantsLookupForDirectory: "Tenant/tenant-lookup-for-directory",
   getTenantDetails: (accountId: string) =>
     `Tenant/get-tenant-details?accountId=${accountId}`,
+  getTenantBasicDetails: `Tenant/tenant-basic-details`,
 };

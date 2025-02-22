@@ -1,12 +1,5 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
-import {
-  Button,
-  Grid,
-  Skeleton,
-  Stack,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import AppLoader from "@/components/ui-components/AppLoader";
+import { Button, Skeleton, Stack, Tooltip, Typography } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import { lazy, useEffect, useRef, useState } from "react";
@@ -35,6 +28,7 @@ import { UpsertSecurityGroupModel } from "@/models/Security/SecurityGroups/Upser
 import { toast } from "react-toastify";
 import DateTimeUtilities from "@/utilities/DateTimeUtilities";
 import AppPage from "@/components/ui-components/AppPage";
+import Grid from "@mui/material/Grid2";
 
 const ViewSecurityGroups = () => {
   const [filterState, setFilterState] = useState<PageParams>({
@@ -308,9 +302,9 @@ const ViewSecurityGroups = () => {
         </Stack>
       }
       content={
-        <AppLazyLoader>
+        <>
           <Grid container spacing={0.8}>
-            <Grid item md={12} xs={12} sm={12}>
+            <Grid size={{ xs: 12, md: 12, sm: 12 }}>
               {isLoading ? (
                 <Skeleton height={400} />
               ) : (
@@ -337,9 +331,9 @@ const ViewSecurityGroups = () => {
             handleOk={handleOk}
             handleClose={handleModalClose}
           >
-            <AppLazyLoader>{getActionView()}</AppLazyLoader>
+            <>{getActionView()}</>
           </AppModal>
-        </AppLazyLoader>
+        </>
       }
     />
   );

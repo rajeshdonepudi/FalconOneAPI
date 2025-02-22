@@ -1,4 +1,4 @@
-﻿using FalconOne.Models.Entities.Mails;
+﻿using FalconOne.Models.Entities.Tags;
 using FalconOne.Models.EntityContracts;
 
 namespace FalconOne.DAL.Contracts

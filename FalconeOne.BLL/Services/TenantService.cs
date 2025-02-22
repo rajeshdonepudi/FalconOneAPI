@@ -37,6 +37,13 @@ namespace FalconeOne.BLL.Services
             return result;
         }
 
+        public async Task<IEnumerable<TenantBasicDetailDto>> GetTenantBasicDetailsAsync(List<Guid> tenantIds, CancellationToken cancellationToken)
+        {
+            var result = await _unitOfWork.TenantRepository.GetTenantBasicDetailsAsync(tenantIds, cancellationToken);
+
+            return result;
+        }
+
         public async Task<IEnumerable<KeyValuePair<string, Guid>>> GetTenantsLookupForDirectoryAsync(string? searchTerm, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(searchTerm))

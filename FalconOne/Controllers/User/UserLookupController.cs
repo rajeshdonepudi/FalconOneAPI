@@ -19,7 +19,7 @@ namespace FalconOne.API.Controllers.User
 
 
         [HttpGet("users-lookup")]
-        [FalconOneAuthorize(PermissionPool.User.VIEW_USERS_LOOKUP)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.VIEW_USERS_LOOKUP)]
         public async Task<IActionResult> GetAllUsersLookup([FromQuery] string? searchTerm, CancellationToken cancellationToken)
         {
             if (string.IsNullOrEmpty(searchTerm)) return Ok();

@@ -20,7 +20,7 @@ namespace FalconOne.DAL.Repositories
                 .AsNoTracking()
                 .SingleOrDefault(x => x.Host.ToLower() == host.ToLower());
 
-            if(tenant is null)
+            if (tenant is null)
             {
                 throw new Exception("Invalid request");
             }
@@ -29,7 +29,15 @@ namespace FalconOne.DAL.Repositories
 
         public async Task<Tenant> GetTenantByHost(string host, CancellationToken cancellationToken)
         {
-            return await _context.Tenants.SingleOrDefaultAsync(x => x.Host == host,cancellationToken)!;
+            return await _context.Tenants.SingleOrDefaultAsync(x => x.Host == host, cancellationToken)!;
+        }
+
+        public async Task<IEnumerable<TenantBasicDetailDto>> GetTenantBasicDetailsAsync(List<Guid> tenantIds, CancellationToken cancellationToken)
+        {
+            var result = await _context.Tenants.Where(x => tenantIds.Contains(x.Id))
+                                               .Select(x => new TenantBasicDetailDto { Name = x.Name, Image = x.ProfilePicture.Base64, AccountAlias = x.AccountAlias })
+                                               .ToListAsync(cancellationToken);
+            return result;
         }
 
         public async Task<PagedList<TenantDetailsDto>> GetAllTenantsAsync(PageParams model, CancellationToken cancellationToken)
@@ -102,11 +110,14 @@ namespace FalconOne.DAL.Repositories
 
         public async Task<IEnumerable<KeyValuePair<string, Guid>>> GetTenantsLookupForDirectoryAsync(string? searchTerm, CancellationToken cancellationToken)
         {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return Enumerable.Empty<KeyValuePair<string, Guid>>();
+            }
             var result = await _context.Tenants
-                                       .Where(x => searchTerm.ToLower().Contains(x.Name.ToLower()))
+                                       .Where(x => EF.Functions.Like(x.Name, $"%{searchTerm}%"))
                                        .Select(u => new KeyValuePair<string, Guid>(u.Name, u.Id))
                                        .ToListAsync(cancellationToken);
-
             return result;
         }
     }

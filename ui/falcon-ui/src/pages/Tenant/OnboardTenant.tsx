@@ -1,19 +1,11 @@
 import AppPage from "@/components/ui-components/AppPage";
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Paper, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // Import animations
-
+import Grid from "@mui/material/Grid2";
 interface StepInfo {
   title: string;
-  content: JSX.Element;
+  content: React.ReactElement;
 }
 
 const OnboardTenant = () => {
@@ -33,10 +25,10 @@ const OnboardTenant = () => {
       content={
         <Paper variant="outlined" sx={{ padding: "1rem" }}>
           <Grid container spacing={2}>
-            <Grid item md={6}>
+            <Grid size={6}>
               <Typography>Total Steps: {steps.length}</Typography>
             </Grid>
-            <Grid item md={6}>
+            <Grid size={6}>
               <Stack direction="row" justifyContent="flex-end">
                 {/* Animated Button */}
                 <motion.div whileTap={{ scale: 0.9 }}>
@@ -69,10 +61,10 @@ const OnboardTenant = () => {
                 </motion.div>
               </Stack>
             </Grid>
-            <Grid item md={12}>
+            <Grid size={12}>
               <Grid container spacing={0.8}>
                 {steps.map((_, index) => (
-                  <Grid item key={index}>
+                  <Grid key={index}>
                     {/* Animated Step Indicator */}
                     <motion.div whileTap={{ scale: 0.8 }}>
                       <Typography
@@ -107,7 +99,7 @@ const OnboardTenant = () => {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item md={12} sx={{ height: "50vh" }}>
+            <Grid size={12} sx={{ height: "50vh" }}>
               <Paper sx={{ padding: "1rem", height: "100%" }}>
                 <AnimatePresence mode="wait">
                   {/* Animated Step Content */}
@@ -125,7 +117,7 @@ const OnboardTenant = () => {
                 </AnimatePresence>
               </Paper>
             </Grid>
-            <Grid item md={12}>
+            <Grid size={12}>
               {/* Animated Navigation Buttons */}
               <motion.div whileTap={{ scale: 0.9 }}>
                 <Button

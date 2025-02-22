@@ -15,27 +15,37 @@ const Root = styled("div")(({ theme }) => ({
     marginTop: theme.spacing(2),
   },
 }));
+
 const AppAccordion = (props: {
   title?: string;
   content: any;
   showCustomTitle?: boolean;
   renderTitle?: any;
   id?: string;
+  expanded?: boolean;
+  onToggle?: (id: string) => void; // <-- New prop for parent control
 }) => {
   return (
-    <Accordion key={`accordion_key_${props.id}`}>
+    <Accordion
+      expanded={props.expanded}
+      onChange={() => {
+        if (props.onToggle && props.id) {
+          props.onToggle(String(props.id));
+        }
+      }}
+    >
       <AccordionSummary
         expandIcon={<ArrowDownwardIcon />}
-        aria-controls="panel1-content"
-        id="panel1-header"
+        aria-controls={`panel-content-${props.id}`}
+        id={`panel-header-${props.id}`}
       >
-        {props?.showCustomTitle ? (
-          <Root>{props?.renderTitle}</Root>
+        {props.showCustomTitle ? (
+          <Root>{props.renderTitle}</Root>
         ) : (
           <Typography variant="subtitle2">{props.title}</Typography>
         )}
       </AccordionSummary>
-      <AccordionDetails>{props?.content}</AccordionDetails>
+      <AccordionDetails>{props.content}</AccordionDetails>
     </Accordion>
   );
 };

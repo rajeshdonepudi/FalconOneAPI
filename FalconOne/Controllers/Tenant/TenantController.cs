@@ -22,7 +22,7 @@ namespace FalconOne.API.Controllers.Tenant
         [HttpPost("add-tenant")]
         public async Task<IActionResult> AddTenant(AddTenantDto model, CancellationToken cancellationToken)
         {
-            var result = await _tenantService.AddTenantAsync(model,cancellationToken);
+            var result = await _tenantService.AddTenantAsync(model, cancellationToken);
 
             if (result) return Created();
 
@@ -30,7 +30,7 @@ namespace FalconOne.API.Controllers.Tenant
         }
 
         [HttpPost("all-tenants")]
-        
+
         public async Task<IActionResult> GetAllUsers(PageParams model, CancellationToken cancellationToken)
         {
             var response = await _tenantService.GetAllTenantsAsync(model, cancellationToken);
@@ -55,8 +55,22 @@ namespace FalconOne.API.Controllers.Tenant
             return Ok(result);
         }
 
+        [HttpPost("tenant-basic-details")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetTenantBasicDetails(List<Guid> tenants, CancellationToken cancellationToken)
+        {
+            if (!tenants.Any())
+            {
+                return Ok(Enumerable.Empty<string>());
+            }
+
+            var result = await _tenantService.GetTenantBasicDetailsAsync(tenants, cancellationToken);
+
+            return Ok(result);
+        }
+
+
         [HttpGet("tenant-dashboard-info")]
-        
         public async Task<IActionResult> GetTenantManagementDashboardData(CancellationToken cancellationToken)
         {
             var result = await _tenantService.GetTenantManagementDashboardInfo(cancellationToken);
@@ -65,7 +79,6 @@ namespace FalconOne.API.Controllers.Tenant
         }
 
         [HttpGet("tenant-lookup-for-directory")]
-        
         public async Task<IActionResult> GetTenantsLookupForDirectory([FromQuery] string? searchTerm, CancellationToken cancellationToken)
         {
             var result = await _tenantService.GetTenantsLookupForDirectoryAsync(searchTerm, cancellationToken);

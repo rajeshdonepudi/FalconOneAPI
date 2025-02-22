@@ -1,4 +1,3 @@
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 
 const ViewAppOwner = () => {
@@ -13,11 +12,7 @@ const ViewAppOwner = () => {
     >
       <Box style={{ position: "relative", display: "inline-block" }}>
         {/* Animation */}
-        <AppLottieAnimation
-          lottieUrl={
-            "https://lottie.host/4d884021-6b94-4b2c-9028-e4cbf3968b4c/ujtWhZAqAP.json"
-          }
-        />
+
         {/* Centered Avatar */}
         <Avatar
           alt="Rajesh Donepudi"

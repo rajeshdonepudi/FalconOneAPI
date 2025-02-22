@@ -10,6 +10,7 @@ namespace FalconOne.API.Config
         {
             app.MapHub<UserDashboardHub>("hubs/user-dashboard").RequireCors(CORSPolicy.ReactAppPolicy);
             app.MapHub<MeetingHubBasic>("hubs/meeting/pro").RequireCors(CORSPolicy.ReactAppPolicy);
+            app.MapHub<MeetingHubBasicV2>("hubs/meeting/v2").RequireCors(CORSPolicy.ReactAppPolicy);
         }
     }
 }

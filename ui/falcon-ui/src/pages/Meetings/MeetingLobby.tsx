@@ -1,13 +1,25 @@
 import AppIcon from "@/components/ui-components/AppIcon";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
+import AppLoader from "@/components/ui-components/AppLoader";
 import { useTheme } from "@mui/material/styles";
 import { AddOutlined, CallOutlined } from "@mui/icons-material";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Button, Card, Grid, Stack, TextField } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  Divider,
+  Paper,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useState } from "react";
 import NavUtilities from "@/utilities/NavUtilities";
 import { useNavigate } from "react-router-dom";
+import Grid from "@mui/material/Grid2";
+import AppPage from "@/components/ui-components/AppPage";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 enum MeetingType {
   None = 0,
@@ -21,53 +33,39 @@ const Meeting = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   return (
-    <AppLazyLoader>
-      <Card variant="outlined" sx={{ height: "85vh" }}>
-        <Grid container sx={{ height: "100%" }}>
-          <Grid
-            item
-            md={6}
-            justifyContent={"center"}
-            alignItems={"center"}
-            xs={12}
-          >
-            <AppLottieAnimation
-              height="100%"
-              width="100%"
-              lottieUrl="https://lottie.host/d48a6381-35c5-42e8-be78-22fc5d2ab887/hNaT8NGoY3.json"
-            />
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <Stack
-              gap={2}
-              sx={{
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                padding: "1rem",
-              }}
-            >
-              {meetingType === MeetingType.None && (
-                <Stack gap={2}>
-                  <Button
-                    size="large"
-                    startIcon={<CallOutlined />}
-                    variant="contained"
-                    onClick={() => setMeetingType(MeetingType.CreateMeeting)}
-                  >
-                    NEW MEETING
-                  </Button>
-                  <Button
-                    size="large"
-                    startIcon={<AddOutlined />}
-                    variant="contained"
-                    onClick={() => setMeetingType(MeetingType.JoinMeeting)}
-                  >
-                    JOIN MEETING
-                  </Button>
-                </Stack>
-              )}
+    <AppPage
+      title="Meeting"
+      rightHeaderActions={
+        <Stack gap={2}>
+          {meetingType === MeetingType.None && (
+            <Stack flexDirection={"row"} gap={2}>
+              <Button
+                size="large"
+                startIcon={<CallOutlined />}
+                variant="contained"
+                onClick={() => setMeetingType(MeetingType.CreateMeeting)}
+              >
+                NEW MEETING
+              </Button>
+              <Button
+                size="large"
+                startIcon={<AddOutlined />}
+                variant="contained"
+                onClick={() => setMeetingType(MeetingType.JoinMeeting)}
+              >
+                JOIN MEETING
+              </Button>
+            </Stack>
+          )}
+        </Stack>
+      }
+      content={
+        <AppPaper>
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="h3">
+                Start or Join Meeting!
+              </Typography>
               {meetingType === MeetingType.CreateMeeting && (
                 <Stack gap={2} sx={{ width: "100%", alignItems: "center" }}>
                   <Stack gap={1} direction={"row"} sx={{ width: "100%" }}>
@@ -123,11 +121,11 @@ const Meeting = () => {
                   />
                 </Stack>
               )}
-            </Stack>
-          </Grid>
-        </Grid>
-      </Card>
-    </AppLazyLoader>
+            </CardContent>
+          </Card>
+        </AppPaper>
+      }
+    ></AppPage>
   );
 };
 

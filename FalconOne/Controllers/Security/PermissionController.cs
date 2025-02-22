@@ -27,7 +27,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpGet("tenant-permissions")]
-        [FalconOneAuthorize(PermissionPool.Permission.VIEW_PERMISSIONS)]
+        [FalconOneAuthorize(PermissionPool.Permission_Management.VIEW_PERMISSIONS)]
         public async Task<IActionResult> GetTenantPermissions(CancellationToken cancellationToken)
         {
             var result = await _permissionService.GetTenantPermissionsAsync(cancellationToken);
@@ -38,7 +38,7 @@ namespace FalconOne.API.Controllers.Security
         
 
         [HttpPost("manage-permissions")]
-        [FalconOneAuthorize(PermissionPool.Permission.MANAGE_PERMISSIONS)]
+        [FalconOneAuthorize(PermissionPool.Permission_Management.MANAGE_PERMISSIONS)]
         public async Task<IActionResult> ManagePermissions(ManagePermissionsDto model, CancellationToken cancellationToken)
         {
             var result = await _permissionService.ManagePermissionsAsync(model, cancellationToken);

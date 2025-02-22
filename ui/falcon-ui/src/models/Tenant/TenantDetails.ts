@@ -12,3 +12,9 @@ export interface TenantDetails {
   userCount: number;
   themesCount: number;
 }
+
+export interface TenantBasicDetail {
+  image: string;
+  name: string;
+  accountAlias: string;
+}

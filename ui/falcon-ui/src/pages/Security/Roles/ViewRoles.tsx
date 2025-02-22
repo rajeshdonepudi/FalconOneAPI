@@ -1,12 +1,5 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
-import {
-  Button,
-  Grid,
-  Skeleton,
-  Stack,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import AppLoader from "@/components/ui-components/AppLoader";
+import { Button, Skeleton, Stack, Tooltip, Typography } from "@mui/material";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 import {
@@ -35,6 +28,8 @@ import UpsertRoleForm from "@/components/features/Security/Roles/UpsertRoleForm"
 import { toast } from "react-toastify";
 import { UpsertRoleModel } from "@/models/Security/Roles/UpsertRoleModel";
 import AppPage from "@/components/ui-components/AppPage";
+import Grid from "@mui/material/Grid2";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const ViewRoles = () => {
   const [filterState, setFilterState] = useState<PageParams>({
@@ -290,26 +285,28 @@ const ViewRoles = () => {
         </Stack>
       }
       content={
-        <AppLazyLoader>
+        <>
           <Grid container spacing={0.8}>
-            <Grid item md={12} xs={12} sm={12}>
-              {isLoading ? (
-                <Skeleton height={400} />
-              ) : (
-                <AppDataGrid
-                  records={rolesData?.data.items ?? []}
-                  columns={columns}
-                  totalRecords={rolesData?.data.totalItems ?? 0}
-                  isFetching={false}
-                  paginationState={filterState}
-                  overlayMessage="No roles present"
-                  setPaginationState={setFilterState}
-                  setRowId={(row) => row.id}
-                  selectedRows={undefined}
-                  columnsToHide={[]}
-                  hasNextPage={rolesData?.data?.isNextPage ?? false}
-                />
-              )}
+            <Grid size={{ xs: 12, md: 12 }}>
+              <AppPaper>
+                {isLoading ? (
+                  <Skeleton height={400} />
+                ) : (
+                  <AppDataGrid
+                    records={rolesData?.data.items ?? []}
+                    columns={columns}
+                    totalRecords={rolesData?.data.totalItems ?? 0}
+                    isFetching={false}
+                    paginationState={filterState}
+                    overlayMessage="No roles present"
+                    setPaginationState={setFilterState}
+                    setRowId={(row) => row.id}
+                    selectedRows={undefined}
+                    columnsToHide={[]}
+                    hasNextPage={rolesData?.data?.isNextPage ?? false}
+                  />
+                )}
+              </AppPaper>
             </Grid>
             <AppModal
               modalTitle={pageActionsState.title}
@@ -318,10 +315,10 @@ const ViewRoles = () => {
               handleOk={handleOk}
               handleClose={handleModalClose}
             >
-              <AppLazyLoader>{getViewByAction()}</AppLazyLoader>
+              <>{getViewByAction()}</>
             </AppModal>
           </Grid>
-        </AppLazyLoader>
+        </>
       }
     />
   );

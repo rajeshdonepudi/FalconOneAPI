@@ -1,18 +1,9 @@
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Link from "@mui/material/Link";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
-import FormHelperText from "@mui/material/FormHelperText";
-import { CircularProgress, Paper } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Button, CircularProgress, Paper } from "@mui/material";
 import AppConstants from "@/constants/constants";
 
 const CreateMeetingForm = (props: any) => {
@@ -57,13 +48,13 @@ const CreateMeetingForm = (props: any) => {
               />
 
               {true ? (
-                <LoadingButton
+                <Button
                   loading={props?.loading}
                   type="submit"
                   variant="contained"
                 >
                   Login
-                </LoadingButton>
+                </Button>
               ) : (
                 <Stack alignItems="center" justifyContent="center">
                   <CircularProgress />

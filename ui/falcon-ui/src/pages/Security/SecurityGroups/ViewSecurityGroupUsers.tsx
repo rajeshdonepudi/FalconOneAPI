@@ -4,7 +4,7 @@ const ArrowForwardIcon = lazy(() => import("@mui/icons-material/ArrowForward"));
 const DeleteOutlineOutlinedIcon = lazy(
   () => import("@mui/icons-material/DeleteOutlineOutlined")
 );
-import AppLazyLoader from "@ui-components/AppLazyLoader";
+import AppLoader from "@ui-components/AppLoader";
 import AppModal from "@ui-components/AppModal";
 import { AppModalState } from "@models/Common/ModalState";
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
@@ -26,9 +26,9 @@ import { TenantUsersSelectionModel } from "@/models/Users/TenantUsersSelectionMo
 import { SecurityGroupsActions } from "@/enumerations/Security/SecurityGroups/security-groups-actions.enum";
 import AppConstants from "@/constants/constants";
 const Button = lazy(() => import("@mui/material/Button"));
-const Grid = lazy(() => import("@mui/material/Grid"));
 const Stack = lazy(() => import("@mui/material/Stack"));
 const Typography = lazy(() => import("@mui/material/Typography"));
+import Grid from "@mui/material/Grid2";
 
 const ViewSecurityGroupUsers = () => {
   /****
@@ -289,9 +289,9 @@ const ViewSecurityGroupUsers = () => {
 
   return (
     <>
-      <AppLazyLoader>
+      <>
         <Grid container spacing={AppConstants.layout.StandardSpacing}>
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12, sm: 12 }}>
             <Stack
               direction={"row"}
               flexWrap={"wrap"}
@@ -313,9 +313,9 @@ const ViewSecurityGroupUsers = () => {
             </Stack>
           </Grid>
 
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12 }}>
             <Grid container spacing={0.8} alignItems={"center"}>
-              <Grid item md={12} sm={12} xs={12}>
+              <Grid size={12}>
                 {isTableInfoLoading ? (
                   <Skeleton height={60} />
                 ) : (
@@ -331,7 +331,7 @@ const ViewSecurityGroupUsers = () => {
             </Grid>
           </Grid>
 
-          <Grid item md={12} xs={12} sm={12}>
+          <Grid size={{ xs: 12, md: 12 }}>
             {isTableInfoLoading ? (
               <Skeleton height={150} />
             ) : (
@@ -371,9 +371,9 @@ const ViewSecurityGroupUsers = () => {
           handleOk={handleOk}
           handleClose={handleModalClose}
         >
-          <AppLazyLoader>{getViewByAction()}</AppLazyLoader>
+          <>{getViewByAction()}</>
         </AppModal>
-      </AppLazyLoader>
+      </>
     </>
   );
 };

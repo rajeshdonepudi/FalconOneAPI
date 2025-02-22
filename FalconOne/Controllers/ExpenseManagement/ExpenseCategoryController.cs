@@ -18,7 +18,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpGet("get-all-categories/lookup")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.VIEW_ALL_EXPENSE_CATEGORIES_LOOKUP)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.VIEW_ALL_EXPENSE_CATEGORIES_LOOKUP)]
         public async Task<IActionResult> GetAllCategories(CancellationToken cancellationToken)
         {
             var result = await _expenseCategoryService.GetAllCategoriesForLookupAsync(cancellationToken);
@@ -27,7 +27,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpPost("get-all-categories")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.VIEW_ALL_EXPENSE_CATEGORIES)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.VIEW_ALL_EXPENSE_CATEGORIES)]
         public async Task<IActionResult> GetAllExpenses(GetExpenseCategoriesDto model, CancellationToken cancellationToken)
         {
             var result = await _expenseCategoryService.GetAllExpenseCategoriesAsync(model, cancellationToken);
@@ -36,7 +36,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpPost("add-category")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.ADD_EXPENSE_CATEGORY)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.ADD_EXPENSE_CATEGORY)]
         public async Task<IActionResult> AddCategory(AddExpenseCategoryDto model, CancellationToken cancellationToken)
         {
             var result = await _expenseCategoryService.AddExpenseCategoryAsync(model, cancellationToken);
@@ -45,7 +45,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpPatch("update-category")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.UPDATE_EXPENSE_CATEGORY)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.UPDATE_EXPENSE_CATEGORY)]
         public async Task<IActionResult> UpdateCategory(UpdateExpenseCategoryDto model, CancellationToken cancellationToken)
         {
             await _expenseCategoryService.UpdateExpenseCategoryAsync(model, cancellationToken);
@@ -54,7 +54,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpDelete("{categoryId}/delete")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.DELETE_EXPENSE_CATEGORY)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.DELETE_EXPENSE_CATEGORY)]
         public async Task<IActionResult> DeleteCategory(Guid categoryId, CancellationToken cancellationToken)
         {
             await _expenseCategoryService.DeleteExpenseCategoryAsync(categoryId, cancellationToken);

@@ -260,15 +260,15 @@ const Test3: React.FC = () => {
       <Grid md={12} item>
         <Paper variant="outlined">
           <Grid container>
-            <Grid item md={3}>
+            <Grid md={3}>
               <Typography>Call Time: {elapsedTime}</Typography>
             </Grid>
-            <Grid item md={3}>
+            <Grid md={3}>
               <Typography>
                 Connection State: {newConnection.current.state}
               </Typography>
             </Grid>
-            <Grid item md={3}>
+            <Grid md={3}>
               <Typography>
                 My Connection ID:
                 {connections.find(
@@ -276,20 +276,20 @@ const Test3: React.FC = () => {
                 )}
               </Typography>
             </Grid>
-            <Grid item md={3}>
+            <Grid md={3}>
               {reloadTimer > 0 && (
                 <Typography variant="h5">
                   Redirecting in {reloadTimer} Seconds
                 </Typography>
               )}
             </Grid>
-            <Grid item md={3}>
+            <Grid md={3}>
               Caller ID: {callerId}
             </Grid>
           </Grid>
         </Paper>
       </Grid>
-      <Grid item md={12}>
+      <Grid md={12}>
         <Stack margin={"1rem"} gap={2} direction={"row"}>
           <Button variant="outlined" onClick={start}>
             Start
@@ -304,9 +304,9 @@ const Test3: React.FC = () => {
       </Grid>
       <Grid md={12} item>
         <Grid container spacing={AppConstants.layout.StandardSpacing}>
-          <Grid item md={8}>
+          <Grid md={8}>
             <Grid container>
-              <Grid item md={6}>
+              <Grid size={6}>
                 <video
                   width={"100%"}
                   height={"100%"}
@@ -316,7 +316,7 @@ const Test3: React.FC = () => {
                   muted
                 />
               </Grid>
-              <Grid item md={6}>
+              <Grid size={6}>
                 <video
                   width={"100%"}
                   height={"100%"}
@@ -327,8 +327,8 @@ const Test3: React.FC = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item md={4}>
-            <Grid item md={12}>
+          <Grid md={4}>
+            <Grid md={12}>
               <Stack direction={"row"}>
                 <TextField
                   value={callerId}

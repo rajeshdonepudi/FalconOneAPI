@@ -8,7 +8,6 @@ import {
   Button,
   Card,
   CardContent,
-  Grid,
   IconButton,
   Skeleton,
   Stack,
@@ -28,7 +27,7 @@ import moment from "moment";
 import { useTranslation } from "react-i18next";
 import AppDataGrid from "@/components/ui-components/AppDataGrid";
 import { TenantBulkAction } from "@/enumerations/Tenant/tenant-bulk-action.enum";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import AppModal from "@/components/ui-components/AppModal";
 import { AppModalState } from "@/models/Common/ModalState";
 import { TenantActions } from "@/enumerations/Tenant/tenant-actions.enum";
@@ -40,6 +39,8 @@ import { toast } from "react-toastify";
 import NavUtilities from "@/utilities/NavUtilities";
 import { useNavigate } from "react-router-dom";
 import AppPage from "@/components/ui-components/AppPage";
+import Grid from "@mui/material/Grid2";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const DeleteOutlineOutlinedIcon = lazy(
   () => import("@mui/icons-material/DeleteOutlineOutlined")
@@ -342,12 +343,12 @@ const ManageTenants = () => {
         </Button>
       }
       content={
-        <AppLazyLoader>
+        <>
           <Grid container spacing={0.8}>
-            <Grid item md={12} sm={12} xs={12}>
+            <Grid size={12}>
               <Grid container spacing={0.8}>
-                <Grid item md={3} xs={12}>
-                  <Card variant="outlined">
+                <Grid size={3}>
+                  <AppPaper>
                     <CardContent>
                       <Typography variant="caption" color="text.secondary">
                         {isMetricsLoading ? <Skeleton /> : "Total Tenants"}
@@ -356,14 +357,14 @@ const ManageTenants = () => {
                         {isMetricsLoading ? (
                           <Skeleton />
                         ) : (
-                          dashboardInfo?.data?.totalTenantsInSystem ?? 0
+                          (dashboardInfo?.data?.totalTenantsInSystem ?? 0)
                         )}
                       </Typography>
                     </CardContent>
-                  </Card>
+                  </AppPaper>
                 </Grid>
-                <Grid item md={3} xs={12}>
-                  <Card variant="outlined">
+                <Grid size={{ md: 3 }}>
+                  <AppPaper>
                     <CardContent>
                       <Typography variant="caption" color="text.secondary">
                         {isMetricsLoading ? <Skeleton /> : "Total Users"}
@@ -378,12 +379,12 @@ const ManageTenants = () => {
                         )}
                       </Typography>
                     </CardContent>
-                  </Card>
+                  </AppPaper>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item md={12} sm={12} xs={12}>
-              <Grid item md={12} xs={12} sm={12}>
+            <Grid size={12}>
+              <Grid size={{ xs: 12, md: 12 }}>
                 {isTenantsListLoading ? (
                   <Skeleton height={500} />
                 ) : (
@@ -414,9 +415,9 @@ const ManageTenants = () => {
             handleOk={handleOk}
             handleClose={handleModalClose}
           >
-            <AppLazyLoader>{getActionView()}</AppLazyLoader>
+            <>{getActionView()}</>
           </AppModal>
-        </AppLazyLoader>
+        </>
       }
     ></AppPage>
   );

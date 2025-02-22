@@ -1,4 +1,4 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import {
   Avatar,
   Button,
@@ -6,7 +6,6 @@ import {
   CardContent,
   Chip,
   Divider,
-  Grid,
   Skeleton,
   Stack,
   Typography,
@@ -21,11 +20,12 @@ import {
 import DisplayUtilities from "@/utilities/DisplayUtilities";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import NavUtilities from "@/utilities/NavUtilities";
-import AppLottieAnimation from "@/components/ui-components/AppLottieAnimation";
 import AppAccordion from "@/components/ui-components/AppAccordion";
 import { toast } from "react-toastify";
 import AppPage from "@/components/ui-components/AppPage";
 import AppConstants from "@/constants/constants";
+import AppPaper from "@/components/ui-components/AppPaper";
+import Grid from "@mui/material/Grid2";
 
 const ViewUserDetails = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -74,13 +74,13 @@ const ViewUserDetails = () => {
         </Stack>
       }
       content={
-        <AppLazyLoader>
+        <>
           <Grid container>
-            <Grid item md={12}>
-              <Card variant="outlined">
+            <Grid size={12}>
+              <AppPaper>
                 <CardContent>
                   <Grid container spacing={AppConstants.layout.StandardSpacing}>
-                    <Grid item md={12} xs={12} sm={12}>
+                    <Grid size={12}>
                       <Stack
                         direction={"column"}
                         justifyContent={"center"}
@@ -107,7 +107,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -123,7 +123,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -139,7 +139,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -155,7 +155,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -171,7 +171,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -189,7 +189,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -209,7 +209,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -229,7 +229,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -247,7 +247,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -267,7 +267,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -287,7 +287,7 @@ const ViewUserDetails = () => {
                         )}
                       </Stack>
                     </Grid>
-                    <Grid item md={2} xs={12} sm={12}>
+                    <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
                       <Stack>
                         {isUserDetailsLoading ? (
                           <Skeleton height={"20px"} width={"100px"} />
@@ -307,12 +307,12 @@ const ViewUserDetails = () => {
                     </Grid>
                   </Grid>
                 </CardContent>
-              </Card>
+              </AppPaper>
             </Grid>
           </Grid>
 
           <Grid container>
-            <Grid item md={12}>
+            <Grid size={{ xl: 2, lg: 3, md: 4, sm: 12 }}>
               <Stack
                 direction={"row"}
                 flexWrap={"wrap"}
@@ -324,11 +324,11 @@ const ViewUserDetails = () => {
                 </Typography>
               </Stack>
             </Grid>
-            <Grid item md={12}>
+            <Grid size={12}>
               {isUserRolesLoading ? (
                 <Skeleton height={"250px"} />
               ) : (
-                <Card variant="outlined">
+                <AppPaper>
                   <CardContent>
                     <Grid
                       container
@@ -336,14 +336,13 @@ const ViewUserDetails = () => {
                     >
                       {userRoles?.data.length === 0 && (
                         <Stack sx={{ width: "100%" }} alignItems={"center"}>
-                          <AppLottieAnimation lottieUrl="https://lottie.host/ada81a9c-e0c5-4a65-a852-a37d9193ab78/qb4MP1dgQD.json" />
                           <Typography variant="h6">
                             No roles associated with the user.
                           </Typography>
                         </Stack>
                       )}
                       {userRoles?.data.map((r) => (
-                        <Grid md={2} item>
+                        <Grid>
                           {
                             <Stack>
                               <Typography variant="caption">Role</Typography>
@@ -354,12 +353,12 @@ const ViewUserDetails = () => {
                       ))}
                     </Grid>
                   </CardContent>
-                </Card>
+                </AppPaper>
               )}
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item md={12}>
+            <Grid size={12}>
               <Stack
                 direction={"row"}
                 flexWrap={"wrap"}
@@ -371,15 +370,14 @@ const ViewUserDetails = () => {
                 </Typography>
               </Stack>
             </Grid>
-            <Grid item md={12}>
+            <Grid size={12}>
               {isPermissionsLoading ? (
                 <Skeleton height={"300px"} />
               ) : (
-                <Card variant="outlined">
+                <AppPaper>
                   <CardContent>
                     {userPermissions?.data.length === 0 && (
                       <Stack sx={{ width: "100%" }} alignItems={"center"}>
-                        <AppLottieAnimation lottieUrl="https://lottie.host/93429471-a4ab-44d8-ae79-066b00a57eec/QCqhcgFB9h.json" />
                         <Typography variant="h6" gutterBottom>
                           No permissions associated with the user.
                         </Typography>
@@ -399,7 +397,7 @@ const ViewUserDetails = () => {
                               >
                                 {g.permissions.map((p) => {
                                   return (
-                                    <Grid md={4} item>
+                                    <Grid size={4}>
                                       <Stack
                                         gap={2}
                                         direction={"row"}
@@ -423,11 +421,11 @@ const ViewUserDetails = () => {
                       );
                     })}
                   </CardContent>
-                </Card>
+                </AppPaper>
               )}
             </Grid>
           </Grid>
-        </AppLazyLoader>
+        </>
       }
     ></AppPage>
   );

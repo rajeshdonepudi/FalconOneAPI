@@ -1,20 +1,19 @@
 import AppIcon from "@/components/ui-components/AppIcon";
+import AppPaper from "@/components/ui-components/AppPaper";
 import AppSimpleValue from "@/components/ui-components/AppSimpleValue";
 import AppConstants from "@/constants/constants";
 import { DomainWhois } from "@/models/Domain/ViewDomainInfoModel";
 import DnsIcon from "@mui/icons-material/Dns";
+import Grid from "@mui/material/Grid2";
 import {
   Card,
   CardContent,
-  CardHeader,
   Divider,
-  Grid,
   Skeleton,
   Stack,
   Typography,
   useTheme,
 } from "@mui/material";
-import { useSelector } from "react-redux";
 
 const DomainInfo = ({
   data,
@@ -26,22 +25,22 @@ const DomainInfo = ({
   const theme = useTheme();
   return (
     <Grid container spacing={0.8}>
-      <Grid item md={8} xs={12}>
-        <Card sx={{ marginBottom: "0.5rem" }}>
+      <Grid size={{ md: 8 }}>
+        <AppPaper>
           <CardContent>
             <Typography gutterBottom variant="subtitle2">
               Domain Details
             </Typography>
             <Divider sx={{ margin: "0.2rem" }} />
             <Grid container spacing={AppConstants.layout.StandardSpacing}>
-              <Grid item md={6} xs={12}>
+              <Grid size={12}>
                 <AppSimpleValue
                   isDataLoading={isLoading}
                   title={"Domain"}
                   value={data?.domain}
                 />
               </Grid>
-              <Grid item md={6} xs={12}>
+              <Grid size={12}>
                 <AppSimpleValue
                   isDataLoading={isLoading}
                   title={"Registrar"}
@@ -50,15 +49,15 @@ const DomainInfo = ({
               </Grid>
             </Grid>
           </CardContent>
-        </Card>
-        <Card sx={{ marginBottom: "0.5rem" }}>
+        </AppPaper>
+        <AppPaper>
           <CardContent>
             <Typography gutterBottom variant="subtitle2">
               Registrar
             </Typography>
             <Divider sx={{ margin: "0.2rem" }} />
             <Grid container spacing={AppConstants.layout.StandardSpacing}>
-              <Grid item md={3} xs={12}>
+              <Grid size={{ md: 3 }}>
                 <AppSimpleValue
                   isDataLoading={isLoading}
                   title={"Name"}
@@ -67,29 +66,29 @@ const DomainInfo = ({
               </Grid>
             </Grid>
           </CardContent>
-        </Card>
-        <Card>
+        </AppPaper>
+        <AppPaper>
           <CardContent>
             <Typography gutterBottom variant="subtitle2">
               Registrant
             </Typography>
             <Divider sx={{ margin: "0.2rem" }} />
             <Grid container spacing={AppConstants.layout.StandardSpacing}>
-              <Grid item md={3} xs={12}>
+              <Grid size={{ md: 3 }}>
                 <AppSimpleValue
                   isDataLoading={isLoading}
                   title={"Organization"}
                   value={data?.registrant.organization}
                 />
               </Grid>
-              <Grid item md={3} xs={12}>
+              <Grid size={{ md: 3 }}>
                 <AppSimpleValue
                   isDataLoading={isLoading}
                   title={"Region"}
                   value={data?.registrant.region}
                 />
               </Grid>
-              <Grid item md={3} xs={12}>
+              <Grid size={{ md: 3 }}>
                 <AppSimpleValue
                   isDataLoading={isLoading}
                   title={"Country"}
@@ -98,10 +97,10 @@ const DomainInfo = ({
               </Grid>
             </Grid>
           </CardContent>
-        </Card>
+        </AppPaper>
       </Grid>
-      <Grid item md={4} sm={12}>
-        <Card>
+      <Grid size={{ md: 4 }}>
+        <AppPaper>
           <CardContent>
             <Typography gutterBottom variant="subtitle2">
               Nameservers
@@ -137,7 +136,7 @@ const DomainInfo = ({
                   </Stack>
                 ))}
           </CardContent>
-        </Card>
+        </AppPaper>
       </Grid>
     </Grid>
   );

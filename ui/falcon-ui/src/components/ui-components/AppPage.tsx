@@ -1,25 +1,31 @@
 import { FC, lazy, ReactNode } from "react";
-import AppLazyLoader from "@ui-components/AppLazyLoader";
+import AppLoader from "@ui-components/AppLoader";
 import { useSelector } from "react-redux";
 import AppConstants from "@/constants/constants";
-const Grid = lazy(() => import("@mui/material/Grid"));
 const Stack = lazy(() => import("@mui/material/Stack"));
 const Typography = lazy(() => import("@mui/material/Typography"));
-
+import Grid from "@mui/material/Grid2";
 interface AppPageProps {
   title: string;
   content: ReactNode;
   rightHeaderActions?: ReactNode;
+  pageAlerts?: ReactNode;
 }
 
-const AppPage: FC<AppPageProps> = ({ title, content, rightHeaderActions }) => {
+const AppPage: FC<AppPageProps> = ({
+  title,
+  content,
+  rightHeaderActions,
+  pageAlerts,
+}) => {
   const themeStore = useSelector((state: any) => state.theme.siteTheme);
 
   return (
     <>
-      <AppLazyLoader>
+      <>
         <Grid container spacing={AppConstants.layout.StandardSpacing}>
-          <Grid item md={12} xs={12} sm={12}>
+          {pageAlerts && <Grid size={{ xs: 12, md: 12 }}>{pageAlerts}</Grid>}
+          <Grid size={{ xs: 12, md: 12 }}>
             <Stack
               direction={"row"}
               flexWrap={"wrap"}
@@ -38,11 +44,9 @@ const AppPage: FC<AppPageProps> = ({ title, content, rightHeaderActions }) => {
               {rightHeaderActions}
             </Stack>
           </Grid>
-          <Grid item md={12} xs={12} sm={12}>
-            {content}
-          </Grid>
+          <Grid size={{ xs: 12, md: 12 }}>{content}</Grid>
         </Grid>
-      </AppLazyLoader>
+      </>
     </>
   );
 };

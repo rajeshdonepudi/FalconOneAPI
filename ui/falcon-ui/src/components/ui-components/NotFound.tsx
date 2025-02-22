@@ -1,25 +1,26 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
-const NotFound = (props: any) => {
+const NotFound = () => {
   return (
-    <Stack
+    <Box
       sx={{
-        maxWidth: "400px",
-        maxHeight: "400px",
+        width: "100vw",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
       }}
-      direction="row"
-      justifyContent="center"
     >
-      <Box>
-        <lottie-player
-          src={props.url}
-          background="transparent"
-          speed="1"
-          loop
-          autoplay
-        ></lottie-player>
-      </Box>
-    </Stack>
+      <Stack alignItems={"center"}>
+        <Typography sx={{ fontWeight: "bold" }} variant="h1">
+          Oops!
+        </Typography>
+        <Typography variant="h6">404 - Page not found</Typography>
+        <Typography variant="subtitle2">
+          The page you're looking for doesn't exist or has been moved.
+        </Typography>
+      </Stack>
+    </Box>
   );
 };
 

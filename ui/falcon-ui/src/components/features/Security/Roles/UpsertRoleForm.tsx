@@ -1,11 +1,11 @@
 import AppConstants from "@/constants/constants";
 import { UpsertRoleModel } from "@/models/Security/Roles/UpsertRoleModel";
 import { UpsertRoleValidationScheme } from "@/validation-schemes/Security/Roles/UpsertRoleValidationScheme";
-import { Grid } from "@mui/material";
 import { useFormik } from "formik";
 import { lazy, useImperativeHandle } from "react";
 const Stack = lazy(() => import("@mui/material/Stack"));
 const TextField = lazy(() => import("@mui/material/TextField"));
+import Grid from "@mui/material/Grid2";
 
 const UpsertRoleForm = (props: any) => {
   const formik = useFormik<UpsertRoleModel>({
@@ -40,7 +40,7 @@ const UpsertRoleForm = (props: any) => {
           style={{ width: "100%" }}
         >
           <Grid container spacing={1.5}>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 id="name"
                 name="name"

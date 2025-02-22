@@ -10,7 +10,12 @@ const addEllipsis = (input: string, length: number) => {
   }
 };
 
+const getUppercaseFirstChar = (str: string): string => {
+  return str.charAt(0).toUpperCase();
+};
+
 export default {
   isNullOrEmptyOrWhitespace,
   addEllipsis,
+  getUppercaseFirstChar
 };

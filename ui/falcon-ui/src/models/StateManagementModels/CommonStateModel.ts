@@ -3,5 +3,5 @@ export interface CommonStateModel {
   isRightDrawerOpen: boolean;
   expandedGroupIds: number[];
   lastSelectedMenuItem: number;
-  drawerContent: JSX.Element | null;
+  drawerContent: React.ReactElement | null;
 }

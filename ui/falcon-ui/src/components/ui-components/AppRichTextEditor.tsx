@@ -1,27 +1,10 @@
 import { useTheme } from "@mui/material";
 import { MouseEvent, forwardRef, useImperativeHandle } from "react";
-import MenuControlsContainer from "@mui-tiptap-controls/MenuControlsContainer";
-import MenuSelectHeading from "@mui-tiptap-controls/MenuSelectHeading";
-import MenuDivider from "@mui-tiptap/MenuDivider";
-import MenuButtonBold from "@mui-tiptap-controls/MenuButtonBold";
-import MenuButtonItalic from "@mui-tiptap-controls/MenuButtonItalic";
+
 import { StarterKit } from "@tiptap/starter-kit";
-import RichTextEditorProvider from "@mui-tiptap/RichTextEditorProvider";
-import RichTextField from "@mui-tiptap/RichTextField";
+
 import { useEditor } from "@tiptap/react";
-import MenuButtonBulletedList from "@mui-tiptap-controls/MenuButtonBulletedList";
-import MenuButtonTextColor from "@mui-tiptap-controls/MenuButtonTextColor";
-import MenuButtonCode from "@mui-tiptap-controls/MenuButtonCode";
-import MenuButtonCodeBlock from "@mui-tiptap-controls/MenuButtonCodeBlock";
-import MenuButtonUnderline from "@mui-tiptap-controls/MenuButtonUnderline";
-import MenuButtonTaskList from "@mui-tiptap-controls/MenuButtonTaskList";
-import MenuButtonStrikethrough from "@mui-tiptap-controls/MenuButtonStrikethrough";
-import MenuButtonRedo from "@mui-tiptap-controls/MenuButtonRedo";
-import MenuButtonUndo from "@mui-tiptap-controls/MenuButtonUndo";
-import MenuButtonHighlightColor from "@mui-tiptap-controls/MenuButtonHighlightColor";
-import MenuButtonHorizontalRule from "@mui-tiptap-controls/MenuButtonHorizontalRule";
-import MenuSelectTextAlign from "@mui-tiptap-controls/MenuSelectTextAlign";
-import MenuSelectFontFamily from "@mui-tiptap-controls/MenuSelectFontFamily";
+
 import FontFamily from "@tiptap/extension-font-family";
 import Color from "@tiptap/extension-color";
 import CodeBlock from "@tiptap/extension-code-block";
@@ -34,28 +17,51 @@ import Underline from "@tiptap/extension-underline";
 import TextAlign from "@tiptap/extension-text-align";
 import Dropcursor from "@tiptap/extension-dropcursor";
 import Image from "@tiptap/extension-image";
-import MenuButtonAddImage from "@mui-tiptap-controls/MenuButtonAddImage";
-import MenuButtonImageUpload from "@mui-tiptap-controls/MenuButtonImageUpload";
-import { ImageNodeAttributes } from "@mui-tiptap/utils/images";
+
 import Link from "@tiptap/extension-link";
 import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
-import MenuButtonEditLink from "@mui-tiptap-controls/MenuButtonEditLink";
-import LinkBubbleMenu from "@mui-tiptap/LinkBubbleMenu";
-import TableBubbleMenu from "@mui-tiptap/TableBubbleMenu";
-import LinkBubbleMenuHandler from "@mui-tiptap/extensions/LinkBubbleMenuHandler";
-import MenuButtonAddTable from "@mui-tiptap-controls/MenuButtonAddTable";
-import MenuSelectFontSize from "@mui-tiptap/controls/MenuSelectFontSize";
-import FontSize from "@mui-tiptap/extensions/FontSize";
-import MenuButtonSubscript from "@mui-tiptap-controls/MenuButtonSubscript";
-import MenuButtonSuperscript from "@mui-tiptap-controls/MenuButtonSuperscript";
-import { isTouchDevice } from "@mui-tiptap/utils/platform";
-import MenuButtonIndent from "@mui-tiptap-controls/MenuButtonIndent";
-import MenuButtonUnindent from "@mui-tiptap-controls/MenuButtonUnindent";
 import { Subscript } from "@tiptap/extension-subscript";
 import { Superscript } from "@tiptap/extension-superscript";
+import {
+  FontSize,
+  ImageNodeAttributes,
+  isTouchDevice,
+  LinkBubbleMenu,
+  LinkBubbleMenuHandler,
+  MenuButtonAddImage,
+  MenuButtonAddTable,
+  MenuButtonBold,
+  MenuButtonBulletedList,
+  MenuButtonCode,
+  MenuButtonCodeBlock,
+  MenuButtonEditLink,
+  MenuButtonHighlightColor,
+  MenuButtonHorizontalRule,
+  MenuButtonImageUpload,
+  MenuButtonIndent,
+  MenuButtonItalic,
+  MenuButtonRedo,
+  MenuButtonStrikethrough,
+  MenuButtonSubscript,
+  MenuButtonSuperscript,
+  MenuButtonTaskList,
+  MenuButtonTextColor,
+  MenuButtonUnderline,
+  MenuButtonUndo,
+  MenuButtonUnindent,
+  MenuControlsContainer,
+  MenuDivider,
+  MenuSelectFontFamily,
+  MenuSelectFontSize,
+  MenuSelectHeading,
+  MenuSelectTextAlign,
+  RichTextEditorProvider,
+  RichTextField,
+  TableBubbleMenu,
+} from "@mui-tiptap/cjs";
 
 const CustomSubscript = Subscript.extend({
   excludes: "superscript",

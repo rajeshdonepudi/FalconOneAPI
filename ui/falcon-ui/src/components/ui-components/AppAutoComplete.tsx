@@ -26,7 +26,7 @@ const AppAutoComplete = forwardRef((props: any, ref) => {
       filterSelectedOptions
       value={props?.value}
       inputValue={props?.inputValue}
-      placeholder={props?.placeholder}
+      // placeholder={props?.placeholder as any}
       onInputChange={(event, newInputValue) => {
         props?.setInputValue(newInputValue);
         debouncedFetchOptions(newInputValue); // Debounce fetchOptions function call
@@ -37,9 +37,10 @@ const AppAutoComplete = forwardRef((props: any, ref) => {
       renderInput={(params) => (
         <TextField
           {...(params as any)}
-          size="small"
+          size={props.size ?? "medium"}
           label={props?.label as string}
           fullWidth
+          placeholder={props.placeholder ?? ""}
         />
       )}
     />

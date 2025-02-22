@@ -1,6 +1,7 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import { FilterLog } from "@/models/SystemLogs/FilterLog";
 import { SystemLog } from "@/models/SystemLogs/SystemLog";
+import Grid from "@mui/material/Grid2";
 import {
   useGetControllerCodesQuery,
   useGetNoOfRequestsByResourceCodeQuery,
@@ -13,7 +14,6 @@ import {
   Checkbox,
   CircularProgress,
   FormControl,
-  Grid,
   InputLabel,
   ListItemText,
   MenuItem,
@@ -110,9 +110,9 @@ const ViewLogs = () => {
   }, [filterState.resourceCodes, filterState.controllerCodes]);
 
   return (
-    <AppLazyLoader>
+    <>
       <Grid container spacing={0.8}>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Stack
             direction={"row"}
             flexWrap={"wrap"}
@@ -122,10 +122,10 @@ const ViewLogs = () => {
             <Typography variant="h6">Logs</Typography>
           </Stack>
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Paper variant="outlined" sx={{ padding: "1rem" }}>
             <Grid container spacing={0.8}>
-              <Grid item md={3} xs={12}>
+              <Grid size={3}>
                 <FormControl sx={{ width: "100%" }}>
                   <InputLabel id="resource-code-label">Resource</InputLabel>
                   <Select
@@ -158,7 +158,7 @@ const ViewLogs = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item md={3} xs={12}>
+              <Grid size={{ md: 3 }}>
                 <FormControl sx={{ width: "100%" }}>
                   <InputLabel id="controller-code-label">Controller</InputLabel>
                   <Select
@@ -199,10 +199,10 @@ const ViewLogs = () => {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Paper variant="outlined" sx={{ padding: "1rem" }}>
             <Grid container spacing={0.8}>
-              <Grid item md={12} sm={12} sx={{ width: "100%" }}>
+              <Grid size={{ md: 12 }} sx={{ width: "100%" }}>
                 <div style={{ width: "100%", height: 250 }}>
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart
@@ -246,10 +246,10 @@ const ViewLogs = () => {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item md={12}>
+        <Grid size={12}>
           <Paper variant="outlined" sx={{ padding: "1rem" }}>
             <Grid container spacing={0.8}>
-              <Grid item md={12}>
+              <Grid size={12}>
                 <TableContainer
                   component={Paper}
                   sx={{ height: 400, overflow: "auto" }}
@@ -341,7 +341,7 @@ const ViewLogs = () => {
           </Paper>
         </Grid>
       </Grid>
-    </AppLazyLoader>
+    </>
   );
 };
 

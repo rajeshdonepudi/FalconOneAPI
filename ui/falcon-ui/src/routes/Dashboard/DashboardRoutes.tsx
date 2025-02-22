@@ -26,7 +26,6 @@ import Test from "@/TestComponent/Test";
 import ViewTrainedModels from "@/pages/AI/ViewTrainedModels";
 import AppPageV2 from "@/components/ui-components/AppPage";
 import { Button } from "@mui/material";
-import ViewDomainInfo from "@/pages/Domain/ViewDomainInfo";
 import ViewQuestions from "@/pages/QuestionAndAnswers/ViewQuestions";
 import ViewMailMessages from "@/pages/Mail/Reader/ViewMailMessages";
 import ViewIndividualMail from "@/pages/Mail/Reader/ViewIndividualMail";
@@ -39,6 +38,8 @@ import Test3 from "@/TestComponent/Test3";
 import VideoCall from "@/components/features/Video/VideoCall";
 import OnboardTenant from "@/pages/Tenant/OnboardTenant";
 import OrgChartComponent from "@/pages/Tenant/OrgChartComponent";
+import ManageTenantPermissionsForm from "@/components/features/Security/Permissions/ManageTenantPermissionsForm";
+import ManageTenantPermissionsNew from "@/pages/Security/Permissions/ManageTenantPermissionNew";
 
 const DashboardRoutes = () => {
   return (
@@ -97,15 +98,14 @@ const DashboardRoutes = () => {
           </Route>
           <Route path="permissions-pool">
             <Route index element={<ManageTenantPermissions />}></Route>
+            <Route path="new" element={<ManageTenantPermissionsNew />}></Route>
           </Route>
           <Route path="security-groups">
             <Route index element={<ViewSecurityGroups />}></Route>
             <Route path="view" element={<ViewSecurityGroupDetails />}></Route>
           </Route>
         </Route>
-        <Route path="domain">
-          <Route path="info" element={<ViewDomainInfo />}></Route>
-        </Route>
+
         <Route path="ai/trained-models">
           <Route index element={<ViewTrainedModels />}></Route>
         </Route>

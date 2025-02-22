@@ -1,4 +1,4 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import { useGetTenantDetailsQuery } from "@/services/Tenant/TenantService";
 import NavUtilities from "@/utilities/NavUtilities";
 import {
@@ -6,7 +6,6 @@ import {
   Button,
   Card,
   CardContent,
-  Grid,
   IconButton,
   Skeleton,
   Stack,
@@ -20,6 +19,9 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ViewTenantUsers from "./ViewTenantUsers";
 import AppPage from "@/components/ui-components/AppPage";
 import AppConstants from "@/constants/constants";
+import Grid from "@mui/material/Grid2";
+import AppPaper from "@/components/ui-components/AppPaper";
+
 const ViewTenantDetails = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -52,17 +54,17 @@ const ViewTenantDetails = () => {
         </Stack>
       }
       content={
-        <AppLazyLoader>
+        <>
           <Stack gap={2}>
             <Grid container>
-              <Grid item md={12}>
-                <Card variant="outlined">
+              <Grid size={12}>
+                <AppPaper>
                   <CardContent>
                     <Grid
                       container
                       spacing={AppConstants.layout.StandardSpacing}
                     >
-                      <Grid item md={12} xs={12} sm={12}>
+                      <Grid size={{ xs: 12, md: 12 }}>
                         <Stack alignItems={"end"}>
                           <Tooltip title="Edit user">
                             <IconButton onClick={() => {}} aria-label="Example">
@@ -71,7 +73,7 @@ const ViewTenantDetails = () => {
                           </Tooltip>
                         </Stack>
                       </Grid>
-                      <Grid item md={12} xs={12} sm={12}>
+                      <Grid size={{ xs: 12, md: 12 }}>
                         <Stack
                           direction={"column"}
                           justifyContent={"center"}
@@ -98,7 +100,7 @@ const ViewTenantDetails = () => {
                           )}
                         </Stack>
                       </Grid>
-                      <Grid item md={2} xs={12} sm={12}>
+                      <Grid size={12}>
                         <Stack>
                           {isTenantDetailsLoading ? (
                             <Skeleton height={"20px"} width={"100px"} />
@@ -114,7 +116,7 @@ const ViewTenantDetails = () => {
                           )}
                         </Stack>
                       </Grid>
-                      <Grid item md={2} xs={12} sm={12}>
+                      <Grid size={2}>
                         <Stack>
                           {isTenantDetailsLoading ? (
                             <Skeleton height={"20px"} width={"100px"} />
@@ -130,7 +132,7 @@ const ViewTenantDetails = () => {
                           )}
                         </Stack>
                       </Grid>
-                      <Grid item md={2} xs={12} sm={12}>
+                      <Grid size={2}>
                         <Stack>
                           {isTenantDetailsLoading ? (
                             <Skeleton height={"20px"} width={"100px"} />
@@ -148,7 +150,7 @@ const ViewTenantDetails = () => {
                           )}
                         </Stack>
                       </Grid>
-                      <Grid item md={2} xs={12} sm={12}>
+                      <Grid size={{ md: 2, sm: 12 }}>
                         <Stack>
                           {isTenantDetailsLoading ? (
                             <Skeleton height={"20px"} width={"100px"} />
@@ -173,7 +175,7 @@ const ViewTenantDetails = () => {
                           )}
                         </Stack>
                       </Grid>
-                      <Grid item md={2} xs={12} sm={12}>
+                      <Grid size={{ md: 2, sm: 12 }}>
                         <Stack>
                           {isTenantDetailsLoading ? (
                             <Skeleton height={"20px"} width={"100px"} />
@@ -200,16 +202,16 @@ const ViewTenantDetails = () => {
                       </Grid>
                     </Grid>
                   </CardContent>
-                </Card>
+                </AppPaper>
               </Grid>
             </Grid>
             <Grid container>
-              <Grid item md={12}>
+              <Grid size={12}>
                 <ViewTenantUsers />
               </Grid>
             </Grid>
           </Stack>
-        </AppLazyLoader>
+        </>
       }
     />
   );

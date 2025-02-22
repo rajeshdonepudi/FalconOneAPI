@@ -8,7 +8,10 @@ import { TenantManagementDashboardInfoDto } from "@/models/Tenant/TenantManageme
 import { PagedList } from "@/models/Common/PagedResponse";
 import { PageParams } from "@/models/Common/PageParams";
 import { UpsertTenantModel } from "@/models/Tenant/UpsertTenantModel";
-import { TenantDetails } from "@/models/Tenant/TenantDetails";
+import {
+  TenantBasicDetail,
+  TenantDetails,
+} from "@/models/Tenant/TenantDetails";
 
 export const tenantsAPI = createApi({
   reducerPath: "tenantsAPI",
@@ -18,6 +21,7 @@ export const tenantsAPI = createApi({
     "tenants-dashboard-info",
     "all-tenants",
     "tenant-details",
+    "tenant-basic-details",
   ],
   baseQuery: AuthorizedBaseQuery,
 
@@ -33,6 +37,17 @@ export const tenantsAPI = createApi({
         url: TenantEndpoints.getTenantDetails(accountId),
       }),
       providesTags: ["tenant-details"],
+    }),
+    getBasicTenantDetails: builder.query<
+      ApiResponse<TenantBasicDetail[]>,
+      string[]
+    >({
+      query: (payload: string[]) => ({
+        url: TenantEndpoints.getTenantBasicDetails,
+        method: "POST",
+        body: payload,
+      }),
+      providesTags: ["tenant-basic-details"],
     }),
     getAllTenants: builder.query<
       ApiResponse<PagedList<TenantDetails>>,
@@ -80,6 +95,7 @@ export const {
   useLazyGetTenantInfoQuery,
   useGetTenantDetailsQuery,
   useGetAllTenantsQuery,
+  useLazyGetBasicTenantDetailsQuery,
   useGetTenantLookupForUserDirectoryQuery,
   useGetTenantDashboardInfoQuery,
 } = tenantsAPI;

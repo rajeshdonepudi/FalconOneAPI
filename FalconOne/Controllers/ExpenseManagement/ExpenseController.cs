@@ -18,7 +18,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpGet("dashboard-info")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.VIEW_EXPENSES_DASHBOARD)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.VIEW_EXPENSES_DASHBOARD)]
         public async Task<IActionResult> GetDashboardInfo(CancellationToken cancellationToken)
         {
             var result = await _expenseService.GetDashboardInfoAsync(cancellationToken);
@@ -27,7 +27,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpGet("{expenseId}/details")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.VIEW_EXPENSE_INFO)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.VIEW_EXPENSE_INFO)]
         public async Task<IActionResult> GetExpenseDetails(Guid expenseId,CancellationToken cancellationToken)
         {
             var result = await _expenseService.GetExpenseDetailsAsync(expenseId, cancellationToken);
@@ -36,7 +36,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpGet("types")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.VIEW_ALL_EXPENSE_TYPES_LOOKUP)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.VIEW_ALL_EXPENSE_TYPES_LOOKUP)]
         public async Task<IActionResult> GetAllExpenseTypesForLookup()
         {
             var result = await _expenseService.GetAllExpenseTypesAsync();
@@ -45,7 +45,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpPost("get-all-expenses")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.VIEW_ALL_EXPENSES)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.VIEW_ALL_EXPENSES)]
         public async Task<IActionResult> GetAllExpenses(GetExpensesDto model, CancellationToken cancellationToken)
         {
             var result = await _expenseService.GetAllExpensesAsync(model, cancellationToken);
@@ -54,7 +54,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpPost("add-expense")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.ADD_EXPENSE)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.ADD_EXPENSE)]
         public async Task<IActionResult> AddExpense(AddExpenseDto model, CancellationToken cancellationToken)
         {
             var result = await _expenseService.AddExpenseAsync(model, cancellationToken);
@@ -63,7 +63,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpPost("add-expenses-bulk")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.ADD_EXPENSES_BULK)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.ADD_EXPENSES_BULK)]
         public async Task<IActionResult> AddExpenses(List<AddExpenseDto> model, CancellationToken cancellationToken)
         {
             var result = await _expenseService.AddExpensesAsync(model, cancellationToken);
@@ -72,7 +72,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpPatch("update")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.UPDATE_EXPENSE)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.UPDATE_EXPENSE)]
         public async Task<IActionResult> UpdateExpense(UpdateExpenseDto model, CancellationToken cancellationToken)
         {
             await _expenseService.UpdateExpenseAsync(model, cancellationToken);
@@ -81,7 +81,7 @@ namespace FalconOne.API.Controllers.ExpenseManagement
         }
 
         [HttpDelete("{expenseId}/delete")]
-        [FalconOneAuthorize(PermissionPool.ExpenseManagement.DELETE_EXPENSE)]
+        [FalconOneAuthorize(PermissionPool.Expense_Management.DELETE_EXPENSE)]
         public async Task<IActionResult> DeleteExpense(Guid expenseId, CancellationToken cancellationToken)
         {
             await _expenseService.DeleteExpenseAsync(expenseId, cancellationToken);

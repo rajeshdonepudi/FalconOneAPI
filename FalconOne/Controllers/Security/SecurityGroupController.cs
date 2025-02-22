@@ -20,7 +20,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpGet("security-group-info")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.VIEW_SECURITY_GROUP_INFO)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.VIEW_SECURITY_GROUP_INFO)]
         public async Task<IActionResult> GetSecurityGroupInfo([FromQuery] Guid securityGroupId, CancellationToken cancellationToken)
         {
             var securityGroupInfo = await _securityGroupService.GetSecurityGroupInfoAsync(securityGroupId, cancellationToken);
@@ -29,7 +29,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("add-security-group")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.CREATE_SECURITY_GROUP)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.CREATE_SECURITY_GROUP)]
         public async Task<IActionResult> AddSecurityGroup(CreateSecurityGroupDto model, CancellationToken cancellationToken)
         {
             var result = await _securityGroupService.AddSecurityGroupAsync(model, cancellationToken);
@@ -40,7 +40,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("all-security-group-users")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.VIEW_SECURITY_GROUP_USERS)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.VIEW_SECURITY_GROUP_USERS)]
         public async Task<IActionResult> GetAllSecurityGroupUsers(FilterSecurityGroupUsers model, CancellationToken cancellationToken)
         {
             var response = await _securityGroupService.GetAllSecurityGroupUsersAsync(model, cancellationToken);
@@ -49,7 +49,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPatch("update-security-group")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.UPDATE_SECURITY_GROUP)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.UPDATE_SECURITY_GROUP)]
         public async Task<IActionResult> UpdateSecurityGroup(UpdateSecurityGroupDto model, CancellationToken cancellationToken)
         {
             var result = await _securityGroupService.UpdateSecurityGroupAsync(model, cancellationToken);
@@ -60,7 +60,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("tenant-security-groups")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.VIEW_SECURITY_GROUPS)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.VIEW_SECURITY_GROUPS)]
         public async Task<IActionResult> GetSecurityGroups(FilterSecurityGroupsDto model, CancellationToken cancellationToken)
         {
             var result = await _securityGroupService.GetTenantSecurityGroupsAsync(model, cancellationToken);
@@ -69,7 +69,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpDelete("delete-tenant-security-group")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.DELETE_SECURITY_GROUP)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.DELETE_SECURITY_GROUP)]
         public async Task<IActionResult> DeleteSecurityGroup([FromQuery] Guid securityGroupId, CancellationToken cancellationToken)
         {
             var result = await _securityGroupService.DeleteSecurityGroupAsync(securityGroupId, cancellationToken);
@@ -80,7 +80,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpGet("tenant-security-groups-lookup")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.VIEW_SECURITY_GROUPS_LOOKUP)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.VIEW_SECURITY_GROUPS_LOOKUP)]
         public async Task<IActionResult> GetTenantSecurityGroupsLookup([FromQuery] string? searchTerm, CancellationToken cancellationToken)
         {
             if(string.IsNullOrEmpty(searchTerm))
@@ -93,7 +93,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpPost("add-users-to-security-group")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.ADD_USERS_TO_SECURITY_GROUP)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.ADD_USERS_TO_SECURITY_GROUP)]
         public async Task<IActionResult> AddUserToSecurityGroup(AddUsersToSecurityGroupDto model, CancellationToken cancellationToken)
         {
             var result = await _securityGroupService.AddUsersToSecurityGroupAsync(model, cancellationToken);
@@ -104,7 +104,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpDelete("delete-user-from-security-group")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.DELETE_USER_FROM_SECURITY_GROUP)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.DELETE_USER_FROM_SECURITY_GROUP)]
         public async Task<IActionResult> DeleteUserFromSecurityGroup(DeleteUserFromSecurityGroupDto model, CancellationToken cancellationToken)
         {
             var result = await _securityGroupService.DeleteUserFromSecurityGroup(model, cancellationToken);
@@ -115,7 +115,7 @@ namespace FalconOne.API.Controllers.Security
         }
 
         [HttpGet("get-security-group-permissions")]
-        [FalconOneAuthorize(PermissionPool.SecurityGroup.VIEW_SECURITY_GROUP_PERMISSIONS)]
+        [FalconOneAuthorize(PermissionPool.Security_Group.VIEW_SECURITY_GROUP_PERMISSIONS)]
         public async Task<IActionResult> GetUserPermissions([FromQuery] Guid securityGroupId, CancellationToken cancellationToken)
         {
             var permissions = await _securityGroupService.GetSecurityGroupPermissionsAsync(securityGroupId, cancellationToken);

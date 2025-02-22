@@ -1,3 +1,4 @@
+import AppPaper from "@/components/ui-components/AppPaper";
 import AppConstants from "@/constants/constants";
 import { Card, Grid, Paper, Stack, Typography } from "@mui/material";
 import { GoogleOAuthProvider } from "@react-oauth/google";
@@ -14,9 +15,9 @@ const GmailAuth = () => {
         sx={{ height: "95vh", overflowY: "auto", padding: "1rem" }}
       >
         <Grid container spacing={AppConstants.layout.StandardSpacing}>
-          <Grid item md={12}>
+          <Grid md={12}>
             <Stack alignItems={"center"}>
-              <Card>
+              <AppPaper>
                 <GoogleLogin
                   onSuccess={(credentialResponse) => {
                     setCredential(credentialResponse.credential ?? "");
@@ -25,10 +26,10 @@ const GmailAuth = () => {
                     console.log("Login Failed");
                   }}
                 />
-              </Card>
+              </AppPaper>
             </Stack>
           </Grid>
-          <Grid item md={12}>
+          <Grid md={12}>
             <Paper sx={{ padding: "1rem" }}>
               <Typography variant="subtitle2">{credential}</Typography>
             </Paper>

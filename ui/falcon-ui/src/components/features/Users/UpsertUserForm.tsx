@@ -1,7 +1,8 @@
 import AppConstants from "@/constants/constants";
 import { UpsertUserModel } from "@/models/Users/UpsertUserModel";
 import UpsertUserValidationScheme from "@/validation-schemes/Users/UpsertUserValidationScheme";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { useFormik } from "formik";
 import { MuiTelInput } from "mui-tel-input";
 import { lazy, useImperativeHandle, useState } from "react";
@@ -83,7 +84,7 @@ const UpsertUserForm = (props: any) => {
           style={{ width: "100%" }}
         >
           <Grid container spacing={1.5}>
-            <Grid item md={6} xs={12}>
+            <Grid size={6}>
               <TextField
                 id="firstName"
                 name="firstName"
@@ -103,7 +104,7 @@ const UpsertUserForm = (props: any) => {
               />
             </Grid>
 
-            <Grid item md={6} xs={12}>
+            <Grid size={6}>
               <TextField
                 id="lastName"
                 name="lastName"
@@ -121,7 +122,7 @@ const UpsertUserForm = (props: any) => {
               />
             </Grid>
 
-            <Grid item md={6} xs={12}>
+            <Grid size={6}>
               <TextField
                 id="email"
                 name="email"
@@ -137,7 +138,7 @@ const UpsertUserForm = (props: any) => {
               />
             </Grid>
 
-            <Grid item md={6} xs={12}>
+            <Grid size={6}>
               <MuiTelInput
                 name="phone"
                 id="phone"
@@ -157,7 +158,7 @@ const UpsertUserForm = (props: any) => {
               />
             </Grid>
 
-            <Grid item md={6} xs={12}>
+            <Grid size={6}>
               <FormControl fullWidth variant="outlined">
                 <InputLabel required={true} htmlFor="password">
                   {commonLocale("password")}
@@ -192,7 +193,7 @@ const UpsertUserForm = (props: any) => {
               </FormControl>
             </Grid>
 
-            <Grid item md={6} xs={12}>
+            <Grid size={6}>
               <FormControl fullWidth variant="outlined">
                 <InputLabel
                   required={true}
@@ -241,10 +242,10 @@ const UpsertUserForm = (props: any) => {
               </FormControl>
             </Grid>
 
-            <Grid item md={12}>
+            <Grid size={12}>
               <Paper variant="outlined">
                 <Grid container padding={AppConstants.layout.StandardPadding}>
-                  <Grid item md={6} xs={12}>
+                  <Grid size={6}>
                     <FormGroup>
                       <FormControlLabel
                         control={
@@ -324,7 +325,7 @@ const UpsertUserForm = (props: any) => {
                       />
                     </FormGroup>
                   </Grid>
-                  <Grid item md={6} xs={12}>
+                  <Grid size={6}>
                     <FormGroup>
                       <FormControlLabel
                         control={

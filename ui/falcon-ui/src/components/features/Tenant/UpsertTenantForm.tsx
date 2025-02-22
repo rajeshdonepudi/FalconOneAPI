@@ -1,6 +1,6 @@
 import { UpsertTenantModel } from "@/models/Tenant/UpsertTenantModel";
 import UpsertTenantValidationScheme from "@/validation-schemes/Tenant/UpsertTenantValidationScheme";
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Card, CardContent, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import {
   ChangeEvent,
@@ -17,7 +17,7 @@ import AppImageCropper from "@/components/ui-components/AppImageCropper";
 import { AppVisuallyHiddenInput } from "@/components/ui-components/AppVisualllyHiddenInput";
 import ImageUtilities from "@/utilities/ImageUtilities";
 import AppConstants from "@/constants/constants";
-
+import Grid from "@mui/material/Grid2";
 const UpsertTenantForm = (props: any) => {
   const imagePickerRef = useRef<any>(null);
   const [selectedImageBase64, setSelectedImageBase64] = useState<string>("");
@@ -119,7 +119,7 @@ const UpsertTenantForm = (props: any) => {
           style={{ width: "100%" }}
         >
           <Grid container spacing={1.5}>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 id="name"
                 name="name"
@@ -134,7 +134,7 @@ const UpsertTenantForm = (props: any) => {
                 helperText={formik.touched?.name && formik.errors.name}
               />
             </Grid>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <TextField
                 id="host"
                 name="host"
@@ -149,7 +149,7 @@ const UpsertTenantForm = (props: any) => {
                 helperText={formik.touched?.host && formik.errors.host}
               />
             </Grid>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <Card
                 sx={{ cursor: "pointer" }}
                 onClick={() => imagePickerRef?.current?.click()}

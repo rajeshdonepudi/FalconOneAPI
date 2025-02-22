@@ -1,18 +1,18 @@
 import AppFileItem from "@/components/ui-components/AppFileItem";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
 import { useGetAllTrainedModelsQuery } from "@/services/AI/AIService";
-import { Grid } from "@mui/material";
 import FolderZipOutlinedIcon from "@mui/icons-material/FolderZipOutlined";
 import { ListItemText, Stack, Typography } from "@mui/material";
 import DateTimeUtilities from "@/utilities/DateTimeUtilities";
+import Grid from '@mui/material/Grid2';
+import AppConstants from "@/constants/constants";
 
 const ViewTrainedModels = () => {
   const { data: trainedModelsData } = useGetAllTrainedModelsQuery(null);
 
   return (
-    <AppLazyLoader>
-      <Grid container spacing={0.8}>
-        <Grid item md={3} sm={12} xs={12}>
+    <>
+      <Grid container spacing={AppConstants.layout.StandardSpacing}>
+        <Grid size="auto">
           {trainedModelsData?.data.map((x) => (
             <AppFileItem icon={<FolderZipOutlinedIcon />}>
               <ListItemText
@@ -36,7 +36,7 @@ const ViewTrainedModels = () => {
           ))}
         </Grid>
       </Grid>
-    </AppLazyLoader>
+    </>
   );
 };
 

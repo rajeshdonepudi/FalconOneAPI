@@ -7,6 +7,7 @@ import ViewSentMails from "./ViewSentMails";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import NavUtilities from "@/utilities/NavUtilities";
 import AppPage from "@/components/ui-components/AppPage";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const ViewUserEmails = () => {
   const [value, setValue] = useState(0);
@@ -38,7 +39,7 @@ const ViewUserEmails = () => {
         </Button>
       }
       content={
-        <Card variant="outlined">
+        <AppPaper>
           <CardContent>
             <Tabs
               value={value}
@@ -57,7 +58,7 @@ const ViewUserEmails = () => {
               <ViewSentMails />
             </AppTabPanel>
           </CardContent>
-        </Card>
+        </AppPaper>
       }
     />
   );

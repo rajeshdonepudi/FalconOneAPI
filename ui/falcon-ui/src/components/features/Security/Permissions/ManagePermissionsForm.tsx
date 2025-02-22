@@ -10,12 +10,13 @@ import { UserLookupModel } from "@/models/Users/UserLookupModel";
 import { selectAuth } from "@/store/Slices/authSlice";
 import fetchWrapper from "@/utilities/HttpUtilities";
 import ManagePermissionValidationScheme from "@/validation-schemes/Security/Permissions/ManagePermissionValidationScheme";
-import { Grid, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { lazy, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 const Stack = lazy(() => import("@mui/material/Stack"));
+import Grid from "@mui/material/Grid2";
 
 const ManagePermissionsForm = (props: any) => {
   const { t: commonLocale } = useTranslation();
@@ -97,7 +98,7 @@ const ManagePermissionsForm = (props: any) => {
       >
         <form autoComplete="off" onSubmit={formik.handleSubmit}>
           <Grid container spacing={4} sx={{ minWidth: "350px" }}>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <Typography variant="caption" display="block" gutterBottom>
                 Select users
               </Typography>
@@ -115,7 +116,7 @@ const ManagePermissionsForm = (props: any) => {
                 ref={usersRef}
               />
             </Grid>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <AppAutoComplete
                 value={formik.values.securityGroups}
                 setValue={(values: any) => {

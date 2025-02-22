@@ -64,7 +64,7 @@ const ViewIndividualMail = () => {
     }
     return (
       <Grid container spacing={AppConstants.layout.StandardSpacing}>
-        <Grid item md={12}>
+        <Grid md={12}>
           <Paper variant="outlined" sx={{ padding: "1rem" }}>
             <Stack>
               <Stack direction={"row"}>
@@ -85,7 +85,7 @@ const ViewIndividualMail = () => {
             </Stack>
           </Paper>
         </Grid>
-        <Grid item md={12}>
+        <Grid md={12}>
           {parse(data?.data?.body ?? "", removeClassElementsParserOptions)}
         </Grid>
       </Grid>

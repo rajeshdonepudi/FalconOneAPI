@@ -11,5 +11,6 @@ namespace FalconeOne.BLL.Interfaces
         Task<TenantLookupDto> GetTenantInfoAsync(CancellationToken cancellationToken);
         Task<TenantManagementDashboardInfoDto> GetTenantManagementDashboardInfo(CancellationToken cancellationToken);
         Task<IEnumerable<KeyValuePair<string, Guid>>> GetTenantsLookupForDirectoryAsync(string? searchTerm, CancellationToken cancellationToken);
+        Task<IEnumerable<TenantBasicDetailDto>> GetTenantBasicDetailsAsync(List<Guid> tenantIds, CancellationToken cancellationToken);
     }
 }

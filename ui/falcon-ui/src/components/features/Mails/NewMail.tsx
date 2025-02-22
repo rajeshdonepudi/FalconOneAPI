@@ -1,5 +1,5 @@
 import AppAutoComplete from "@/components/ui-components/AppAutoComplete";
-import { Button, Grid, Stack, TextField } from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
 import { useRef, useState } from "react";
 import AppRichTextEditor from "@/components/ui-components/AppRichTextEditor";
 import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
@@ -8,6 +8,8 @@ import NewMailValidationScheme from "@/validation-schemes/Mail/NewMailValidation
 import { selectAuth } from "@/store/Slices/authSlice";
 import { useSelector } from "react-redux";
 import AppConstants from "@/constants/constants";
+import Grid from '@mui/material/Grid2';
+
 
 const NewMail = (props: any) => {
   const [toInputState, setToInputState] = useState<string>("");
@@ -66,7 +68,7 @@ const NewMail = (props: any) => {
     <Stack sx={{ width: "100%" }}>
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={AppConstants.layout.StandardSpacing}>
-          <Grid item xs={12} md={6} xl={6}>
+          <Grid size={{ xs: 6, md: 6 }}>
             <AppAutoComplete
               value={formik.values.toRecipients}
               setValue={(values: any) => {
@@ -81,7 +83,7 @@ const NewMail = (props: any) => {
               ref={inputRefTo}
             />
           </Grid>
-          <Grid item xs={12} md={6} xl={6}>
+          <Grid size={{ xs: 6, md: 6 }}>
             <AppAutoComplete
               value={formik.values.ccRecipients}
               setValue={(values: any) => {
@@ -96,7 +98,7 @@ const NewMail = (props: any) => {
               ref={inputRefCc}
             />
           </Grid>
-          <Grid item xs={12} md={6} xl={6}>
+          <Grid size={{ xs: 6, md: 6 }}>
             <AppAutoComplete
               value={formik.values.bccRecipients}
               setValue={(values: any) => {
@@ -111,7 +113,7 @@ const NewMail = (props: any) => {
               ref={inputRefBcc}
             />
           </Grid>
-          <Grid item xs={12} md={12} xl={12}>
+          <Grid  size={{ xs: 12, md: 12 }}>
             <TextField
               multiline
               fullWidth
@@ -123,7 +125,7 @@ const NewMail = (props: any) => {
               }}
             />
           </Grid>
-          <Grid item xs={12} md={12} xl={12}>
+          <Grid  size={{ xs: 12, md: 12 }}>
             <AppRichTextEditor
               onEditorContentUpdate={(content: string) => {
                 formik.setFieldValue("body", content);
@@ -131,7 +133,7 @@ const NewMail = (props: any) => {
               editable={true}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Button
               type="submit"
               variant="contained"

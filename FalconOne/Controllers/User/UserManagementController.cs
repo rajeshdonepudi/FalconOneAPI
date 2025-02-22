@@ -21,7 +21,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpGet("user-management-dashboard-info")]
-        [FalconOneAuthorize(PermissionPool.UserManagement.USER_METRIC_BASIC_INFO)]
+        [FalconOneAuthorize(PermissionPool.User_Management.USER_METRIC_BASIC_INFO)]
         public async Task<IActionResult> TenantUserManagementDashboardInfo([FromQuery] string accountAlias, CancellationToken cancellationToken)
         {
             var result = await _userService.GetTenantUserManagementDashboardInfo(accountAlias, cancellationToken);
@@ -30,7 +30,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpPost("add-user")]
-        [FalconOneAuthorize(PermissionPool.UserManagement.CREATE_USER)]
+        [FalconOneAuthorize(PermissionPool.User_Management.CREATE_USER)]
         public async Task<IActionResult> AddUser(UpsertUserDto model)
         {
             var result = await _userService.UpsertUser(model);
@@ -44,7 +44,7 @@ namespace FalconOne.API.Controllers.User
 
 
         [HttpPost("upsert-tenant-user")]
-        [FalconOneAuthorize(PermissionPool.UserManagement.UPDATE_USER)]
+        [FalconOneAuthorize(PermissionPool.User_Management.UPDATE_USER)]
         public async Task<IActionResult> UpsertTenantUser(UpsertTenantUserDto model, CancellationToken cancellationToken)
         {
             var result = await _userService.UpsertTenantUser(model, cancellationToken);
@@ -57,7 +57,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpDelete("delete-user/{resourceAlias}")]
-        [FalconOneAuthorize(PermissionPool.UserManagement.DELETE_USER)]
+        [FalconOneAuthorize(PermissionPool.User_Management.DELETE_USER)]
         public async Task<IActionResult> DeleteUser(string resourceAlias)
         {
             var result = await _userService.DeleteUserAsync(resourceAlias, CancellationToken.None);
@@ -78,7 +78,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpPost("all-tenant-users")]
-        [FalconOneAuthorize(PermissionPool.UserManagement.VIEW_USERS)]
+        [FalconOneAuthorize(PermissionPool.User_Management.VIEW_USERS)]
         public async Task<IActionResult> GetAllTenantUsers(FilterTenantUsers model, CancellationToken cancellationToken)
         {
             var response = await _userService.GetAllActiveTenantUsersAsync(model, cancellationToken);
@@ -87,7 +87,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpGet("get-user")]
-        [FalconOneAuthorize(PermissionPool.User.VIEW_USER_INFO)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.VIEW_USER_INFO)]
         public async Task<IActionResult> GetByUserId([FromQuery] Guid userId, CancellationToken cancellationToken)
         {
             var response = await _userService.GetByIdAsync(userId, cancellationToken);
@@ -96,7 +96,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpPost("revoke-refresh-token")]
-        [FalconOneAuthorize(PermissionPool.UserManagement.REVOKE_ACCESS)]
+        [FalconOneAuthorize(PermissionPool.User_Management.REVOKE_ACCESS)]
         public async Task<IActionResult> RevokeRefreshToken(RevokeRefreshTokenRequestDto model)
         {
             var response = await _userService.RevokeAccess(model.RefreshToken);
@@ -109,7 +109,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpPost("bulk-action")]
-        [FalconOneAuthorize(PermissionPool.UserManagement.BULK_USER_ACTIONS)]
+        [FalconOneAuthorize(PermissionPool.User_Management.BULK_USER_ACTIONS)]
         public async Task<IActionResult> TakeBulkAction(UserBulkActionDto model, CancellationToken cancellationToken)
         {
             var result = await _userService.UpdateBulkActionsAsync(model, cancellationToken);

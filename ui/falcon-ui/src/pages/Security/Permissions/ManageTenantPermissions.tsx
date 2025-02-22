@@ -1,16 +1,16 @@
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import {
   useGetAllPermissionsQuery,
   useManagePermissionsForTenantMutation,
 } from "@/services/Security/PermissionService";
 import {
+  Alert,
   Button,
   Card,
   CardContent,
   Checkbox,
   Chip,
   FormControlLabel,
-  Grid,
   IconButton,
   List,
   ListItem,
@@ -24,6 +24,7 @@ import {
 
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { useRef, useState } from "react";
+import Grid from "@mui/material/Grid2";
 import { KeyValuePair } from "@/models/Common/KeyValuePair";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import AppModal from "@/components/ui-components/AppModal";
@@ -36,6 +37,8 @@ import { toast } from "react-toastify";
 import AppPage from "@/components/ui-components/AppPage";
 import AppAccordion from "@/components/ui-components/AppAccordion";
 import AppConstants from "@/constants/constants";
+import NavUtilities from "@/utilities/NavUtilities";
+
 const ManageTenantPermissions = () => {
   const [selectedPermissions, setSelectedPermissions] = useState<
     KeyValuePair<string, string>[]
@@ -177,6 +180,16 @@ const ManageTenantPermissions = () => {
   return (
     <AppPage
       title="Permission Pool"
+      pageAlerts={
+        <Alert severity="info" sx={{ display: "flex", alignItems: "center" }}>
+          We’ve introduced a new way to manage tenant permissions.
+          <Button
+            href={NavUtilities.ToSecureArea("security/permissions-pool/new")}
+          >
+            Switch to the new experience
+          </Button>
+        </Alert>
+      }
       rightHeaderActions={
         <Stack
           direction={"row"}
@@ -209,10 +222,10 @@ const ManageTenantPermissions = () => {
         </Stack>
       }
       content={
-        <AppLazyLoader>
+        <>
           <Grid container spacing={3}>
             {selectedPermissions.length > 0 && (
-              <Grid item md={12} xs={12} sm={12}>
+              <Grid size={{ xs: 12, md: 12 }}>
                 <Stack
                   direction={"row"}
                   alignItems={"center"}
@@ -236,7 +249,7 @@ const ManageTenantPermissions = () => {
                 <Paper variant="outlined" sx={{ padding: "0.5rem" }}>
                   <Grid container spacing={AppConstants.layout.StandardSpacing}>
                     {selectedPermissions.map((permission) => (
-                      <Grid item xs={12} sm={6} md={3} key={permission.key}>
+                      <Grid size={{ md: 3, sm: 3 }} key={permission.key}>
                         <Paper variant="outlined" style={{ padding: "10px" }}>
                           <Typography variant="body2">
                             {permission.value}
@@ -252,7 +265,7 @@ const ManageTenantPermissions = () => {
                 </Paper>
               </Grid>
             )}
-            <Grid item md={12} xs={12} sm={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <Paper variant="outlined" sx={{ padding: "0.5rem" }}>
                 <Grid container spacing={0.8}>
                   {permissionsData?.data.map((group) => {
@@ -261,10 +274,7 @@ const ManageTenantPermissions = () => {
                     );
                     return (
                       <Grid
-                        item
-                        xs={12}
-                        sm={6}
-                        md={4}
+                        size={12}
                         key={group.id}
                         // style={{ display: "flex" }}
                       >
@@ -363,9 +373,9 @@ const ManageTenantPermissions = () => {
             handleOk={handleOk}
             handleClose={handleModalClose}
           >
-            <AppLazyLoader>{getViewBasedByAction()}</AppLazyLoader>
+            <>{getViewBasedByAction()}</>
           </AppModal>
-        </AppLazyLoader>
+        </>
       }
     />
   );

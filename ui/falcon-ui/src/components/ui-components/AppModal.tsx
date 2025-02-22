@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
+import AppLoader from "./AppLoader";
 
 type AppModalProps = {
   show: boolean;
@@ -21,6 +22,7 @@ type AppModalProps = {
   disableCancel?: boolean;
   disableOk?: boolean;
   disableCloseButton?: boolean;
+  hideCancelButton?: boolean;
 };
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
@@ -79,7 +81,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
 export default function AppModal(props: AppModalProps) {
   const { t: commonLocale } = useTranslation();
   return (
-    <div>
+    <React.Suspense fallback={<AppLoader />}>
       <BootstrapDialog
         onClose={props?.handleClose}
         aria-labelledby="customized-dialog-title"
@@ -95,13 +97,16 @@ export default function AppModal(props: AppModalProps) {
         </BootstrapDialogTitle>
         <DialogContent dividers>{props?.children}</DialogContent>
         <DialogActions>
-          <Button
-            disabled={props.disableActions || props.disableCancel}
-            onClick={props?.handleClose}
-            variant="outlined"
-          >
-            {commonLocale("cancel")}
-          </Button>
+          {!props.hideCancelButton && (
+            <Button
+              disabled={props.disableActions || props.disableCancel}
+              onClick={props?.handleClose}
+              variant="outlined"
+            >
+              {commonLocale("cancel")}
+            </Button>
+          )}
+
           <Button
             disabled={props.disableActions || props.disableOk}
             variant="contained"
@@ -112,6 +117,6 @@ export default function AppModal(props: AppModalProps) {
           </Button>
         </DialogActions>
       </BootstrapDialog>
-    </div>
+    </React.Suspense>
   );
 }

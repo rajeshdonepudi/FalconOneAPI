@@ -11,8 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
 import Typography from "@mui/material/Typography";
 import FormHelperText from "@mui/material/FormHelperText";
-import { CircularProgress, Paper } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+import { Button, CircularProgress, Paper } from "@mui/material";
 import AppConstants from "@/constants/constants";
 
 const LoginForm = (props: any) => {
@@ -98,13 +97,13 @@ const LoginForm = (props: any) => {
                 </Link>
               </Stack>
               {true ? (
-                <LoadingButton
+                <Button
                   loading={props?.loading}
                   type="submit"
                   variant="contained"
                 >
                   Login
-                </LoadingButton>
+                </Button>
               ) : (
                 <Stack alignItems="center" justifyContent="center">
                   <CircularProgress />

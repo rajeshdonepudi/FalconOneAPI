@@ -3,7 +3,6 @@ import { ChangeEvent, lazy, useMemo, useRef, useState } from "react";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
-const Grid = lazy(() => import("@mui/material/Grid"));
 const Stack = lazy(() => import("@mui/material/Stack"));
 
 import Paper from "@mui/material/Paper";
@@ -15,7 +14,8 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
+import Grid from "@mui/material/Grid2";
 import AppModal from "@/components/ui-components/AppModal";
 import AppImageCropper from "@/components/ui-components/AppImageCropper";
 import {
@@ -26,6 +26,7 @@ import { AppVisuallyHiddenInput } from "@/components/ui-components/AppVisualllyH
 import ImageUtilities from "@/utilities/ImageUtilities";
 import AppPage from "@/components/ui-components/AppPage";
 import AppConstants from "@/constants/constants";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const UserProfile = () => {
   const [uploadProfilePicture] = useUpdateProfilePictureMutation();
@@ -105,15 +106,15 @@ const UserProfile = () => {
     <AppPage
       title="Profile"
       content={
-        <AppLazyLoader>
+        <>
           <AppVisuallyHiddenInput
             type="file"
             ref={imagePickerRef}
             onChange={onFileChange}
           />
           <Grid container spacing={0.8}>
-            <Grid item md={12} xs={12}>
-              <Paper sx={{ padding: "0.8rem" }} variant="outlined">
+            <Grid size={{ xs: 12, md: 12 }}>
+              <AppPaper>
                 <Stack
                   direction={"row"}
                   justifyContent={"center"}
@@ -156,12 +157,12 @@ const UserProfile = () => {
                     </Stack>
                   </Stack>
                 </Stack>
-              </Paper>
+              </AppPaper>
             </Grid>
-            <Grid item md={12} xs={12}>
-              <Paper sx={{ padding: "0.8rem" }} variant="outlined">
+            <Grid size={{ xs: 12, md: 12 }}>
+              <AppPaper>
                 <Grid container spacing={AppConstants.layout.StandardSpacing}>
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ md: 3 }}>
                     {isUserInfoLoading ? (
                       <Stack spacing={AppConstants.layout.StandardSpacing}>
                         <Skeleton variant="text" width={60} height={20} />
@@ -177,7 +178,7 @@ const UserProfile = () => {
                     )}
                   </Grid>
 
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ md: 3 }}>
                     {isUserInfoLoading ? (
                       <Stack spacing={AppConstants.layout.StandardSpacing}>
                         <Skeleton variant="text" width={60} height={20} />
@@ -193,7 +194,7 @@ const UserProfile = () => {
                     )}
                   </Grid>
 
-                  <Grid item xs={12}>
+                  <Grid size={12}>
                     {isUserInfoLoading ? (
                       <Stack spacing={AppConstants.layout.StandardSpacing}>
                         <Skeleton variant="text" width={40} height={20} />
@@ -209,7 +210,7 @@ const UserProfile = () => {
                     )}
                   </Grid>
 
-                  <Grid item md={3} xs={12}>
+                  <Grid size={{ md: 3 }}>
                     {isUserInfoLoading ? (
                       <Stack spacing={AppConstants.layout.StandardSpacing}>
                         <Skeleton variant="text" width={40} height={20} />
@@ -225,7 +226,7 @@ const UserProfile = () => {
                     )}
                   </Grid>
                 </Grid>
-              </Paper>
+              </AppPaper>
             </Grid>
           </Grid>
           <AppModal
@@ -242,7 +243,7 @@ const UserProfile = () => {
               />
             </Stack>
           </AppModal>
-        </AppLazyLoader>
+        </>
       }
     />
   );

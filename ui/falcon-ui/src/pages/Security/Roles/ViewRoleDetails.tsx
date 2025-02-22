@@ -5,7 +5,7 @@ const ArrowForwardIcon = lazy(() => import("@mui/icons-material/ArrowForward"));
 const DeleteOutlineOutlinedIcon = lazy(
   () => import("@mui/icons-material/DeleteOutlineOutlined")
 );
-import AppLazyLoader from "@/components/ui-components/AppLazyLoader";
+import AppLoader from "@/components/ui-components/AppLoader";
 import { GetUsersInRoleModel } from "@/models/Security/GetUsersInRoleModel";
 import {
   useAddUserToRoleMutation,
@@ -16,7 +16,6 @@ import {
 import {
   Button,
   Chip,
-  Grid,
   IconButton,
   Paper,
   Skeleton,
@@ -40,6 +39,7 @@ import TenantUsersSelectionForm from "@/components/features/Users/TenantUsersSel
 import { TenantUsersSelectionModel } from "@/models/Users/TenantUsersSelectionModel";
 import { ToastService } from "@/services/Common/ToastService";
 import AppConstants from "@/constants/constants";
+import Grid from "@mui/material/Grid2";
 
 const ViewRoleDetails = () => {
   let [searchParams] = useSearchParams();
@@ -233,9 +233,9 @@ const ViewRoleDetails = () => {
   }, []);
 
   return (
-    <AppLazyLoader>
+    <>
       <Grid container spacing={0.8}>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Stack direction={"row"} justifyContent={"space-between"}>
             <Typography variant="h6">Role Information</Typography>
             <Button
@@ -248,10 +248,10 @@ const ViewRoleDetails = () => {
             </Button>
           </Stack>
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Paper variant="outlined">
             <Grid container spacing={0.8} sx={{ padding: "0.5rem" }}>
-              <Grid item md={4}>
+              <Grid size={4}>
                 <Stack>
                   <Typography variant="caption">
                     {isRoleInfoLoading ? <Skeleton height={40} /> : "ID"}
@@ -265,7 +265,7 @@ const ViewRoleDetails = () => {
                   </Typography>
                 </Stack>
               </Grid>
-              <Grid item md={2}>
+              <Grid size={{ md: 2 }}>
                 <Stack>
                   <Typography variant="caption">
                     {isRoleInfoLoading ? <Skeleton height={40} /> : "Name"}
@@ -280,7 +280,7 @@ const ViewRoleDetails = () => {
                 </Stack>
               </Grid>
 
-              <Grid item md={2}>
+              <Grid size={{ md: 2 }}>
                 <Stack>
                   <Typography variant="caption">
                     {isRoleInfoLoading ? (
@@ -312,7 +312,7 @@ const ViewRoleDetails = () => {
                 </Stack>
               </Grid>
 
-              <Grid item md={2}>
+              <Grid size={{ md: 2 }}>
                 <Stack>
                   <Typography variant="caption">
                     {isRoleInfoLoading ? (
@@ -335,9 +335,9 @@ const ViewRoleDetails = () => {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid size={{ xs: 12, md: 12 }}>
           <Grid container spacing={AppConstants.layout.StandardSpacing}>
-            <Grid item md={12} xs={12} sm={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <Stack
                 direction={"row"}
                 flexWrap={"wrap"}
@@ -358,7 +358,7 @@ const ViewRoleDetails = () => {
                 )}
               </Stack>
             </Grid>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               {isUserInfoLoading ? (
                 <Skeleton height={300} />
               ) : (
@@ -396,9 +396,9 @@ const ViewRoleDetails = () => {
         handleOk={handleOk}
         handleClose={handleModalClose}
       >
-        <AppLazyLoader>{getViewByAction()}</AppLazyLoader>
+        <>{getViewByAction()}</>
       </AppModal>
-    </AppLazyLoader>
+    </>
   );
 };
 

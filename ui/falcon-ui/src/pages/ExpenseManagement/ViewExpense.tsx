@@ -5,11 +5,11 @@ import {
   Card,
   CardContent,
   Divider,
-  Grid,
   Skeleton,
   Stack,
   Typography,
 } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import NavUtilities from "@/utilities/NavUtilities";
@@ -17,6 +17,7 @@ import { useLazyGetExpenseDetailsQuery } from "@/services/ExpenseManagement/Expe
 import { useEffect, useMemo } from "react";
 import AppConstants from "@/constants/constants";
 import DateTimeUtilities from "@/utilities/DateTimeUtilities";
+import AppPaper from "@/components/ui-components/AppPaper";
 
 const ViewExpense = () => {
   const navigate = useNavigate();
@@ -48,10 +49,10 @@ const ViewExpense = () => {
         </Button>
       }
       content={
-        <Card variant="outlined">
+        <AppPaper>
           <CardContent>
             <Grid container>
-              <Grid item md={12}>
+              <Grid size={{ md: 12 }}>
                 <Stack alignItems={"center"}>
                   <Typography variant="caption">Amount</Typography>
                   {isFetching ? (
@@ -65,7 +66,7 @@ const ViewExpense = () => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item md={12}>
+              <Grid size={{ md: 12 }}>
                 <Stack alignItems={"center"}>
                   <Typography variant="caption">Description</Typography>
                   {isFetching ? (
@@ -85,12 +86,12 @@ const ViewExpense = () => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item md={12}>
+              <Grid size={{ md: 12 }}>
                 <Divider sx={{ margin: AppConstants.layout.StandardSpacing }} />
               </Grid>
-              <Grid item md={12}>
+              <Grid size={{ md: 12 }}>
                 <Grid container spacing={AppConstants.layout.StandardSpacing}>
-                  <Grid item md={4}>
+                  <Grid size={{ md: 4 }}>
                     {isFetching ? (
                       <Stack spacing={AppConstants.layout.StandardSpacing}>
                         <Skeleton variant="text" width={40} height={20} />
@@ -105,7 +106,7 @@ const ViewExpense = () => {
                       </Stack>
                     )}
                   </Grid>
-                  <Grid item md={4}>
+                  <Grid size={{ md: 4 }}>
                     {isFetching ? (
                       <Stack spacing={AppConstants.layout.StandardSpacing}>
                         <Skeleton variant="text" width={40} height={20} />
@@ -120,7 +121,7 @@ const ViewExpense = () => {
                       </Stack>
                     )}
                   </Grid>
-                  <Grid item md={4}>
+                  <Grid size={{ md: 4 }}>
                     {isFetching ? (
                       <Stack spacing={AppConstants.layout.StandardSpacing}>
                         <Skeleton variant="text" width={40} height={20} />
@@ -141,7 +142,7 @@ const ViewExpense = () => {
               </Grid>
             </Grid>
           </CardContent>
-        </Card>
+        </AppPaper>
       }
     ></AppPage>
   );

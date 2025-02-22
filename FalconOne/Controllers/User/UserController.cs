@@ -19,7 +19,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpGet("get-user-profile-info")]
-        [FalconOneAuthorize(PermissionPool.User.VIEW_USER_PROFILE_INFO)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.VIEW_USER_PROFILE_INFO)]
         public async Task<IActionResult> GetProfileInfo([FromQuery] Guid userId, CancellationToken cancellationToken)
         {
             var result = await _userService.GetUserProfileInfoAsync(userId, cancellationToken);
@@ -28,7 +28,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpGet("get-user-info")]
-        [FalconOneAuthorize(PermissionPool.User.VIEW_USER_INFO)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.VIEW_USER_INFO)]
         public async Task<IActionResult> GetUserInfo([FromQuery] string resourceId, CancellationToken cancellationToken)
         {
             var result = await _userService.GetUserByResourceId(resourceId, cancellationToken);
@@ -37,7 +37,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpGet("user-dashboard-info")]
-        [FalconOneAuthorize(PermissionPool.User.USER_DASHBOARD_METRIC_INFO)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.USER_DASHBOARD_METRIC_INFO)]
         public async Task<IActionResult> TenantUserManagementDashboardInfo(CancellationToken cancellationToken)
         {
             var result = await _userService.GetUserDashboardInfoAsync(cancellationToken);
@@ -46,7 +46,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpGet("get-user-roles")]
-        [FalconOneAuthorize(PermissionPool.User.VIEW_USER_ROLES)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.VIEW_USER_ROLES)]
         public async Task<IActionResult> GetUserRoles([FromQuery] string resourceId, CancellationToken cancellationToken)
         {
             var roles = await _userService.GetUserRolesByResourceId(resourceId, cancellationToken);
@@ -65,7 +65,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpGet("get-user-permissions")]
-        [FalconOneAuthorize(PermissionPool.User.VIEW_USER_PERMISSIONS)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.VIEW_USER_PERMISSIONS)]
         public async Task<IActionResult> GetUserPermissions(string resourceId, CancellationToken cancellationToken)
         {
             var permissions = await _userService.GetUserPermissions(resourceId, cancellationToken);
@@ -74,7 +74,7 @@ namespace FalconOne.API.Controllers.User
         }
 
         [HttpPost("upload-profile-picture")]
-        [FalconOneAuthorize(PermissionPool.User.CHANGE_PROFILE_PICTURE)]
+        [FalconOneAuthorize(PermissionPool.User_Permissions.CHANGE_PROFILE_PICTURE)]
         public async Task<IActionResult> UpdateProfilePicture(UpdateProfilePictureDto model, CancellationToken cancellationToken)
         {
             var result = await _userService.UpdateProfilePictureAsync(model, cancellationToken);

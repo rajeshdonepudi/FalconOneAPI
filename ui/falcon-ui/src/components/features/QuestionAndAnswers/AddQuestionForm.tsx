@@ -66,7 +66,7 @@ const AddQuestionForm = (props: any) => {
   return (
     <form onSubmit={formik.handleSubmit}>
       <Grid container spacing={AppConstants.layout.StandardSpacing}>
-        <Grid item md={12}>
+        <Grid md={12}>
           <TextField
             fullWidth
             placeholder="Enter question here..."
@@ -81,7 +81,7 @@ const AddQuestionForm = (props: any) => {
             helperText={formik.touched?.name && formik.errors.name}
           />
         </Grid>
-        <Grid item md={12}>
+        <Grid md={12}>
           <FormControl fullWidth>
             <InputLabel id="question-type-select-box">Question Type</InputLabel>
             <Select
@@ -104,7 +104,7 @@ const AddQuestionForm = (props: any) => {
 
         {(formik.values.type === QuestionTypeEnum.SingleSelectDropdown ||
           formik.values.type === QuestionTypeEnum.MultiSelectDropdown) && (
-          <Grid item md={12}>
+          <Grid md={12}>
             <Paper variant="outlined" sx={{ padding: "1rem" }}>
               <Stack gap={1}>
                 <Stack

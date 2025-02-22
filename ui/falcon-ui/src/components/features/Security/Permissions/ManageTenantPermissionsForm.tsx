@@ -3,12 +3,12 @@ import AppConstants from "@/constants/constants";
 import { AssignOrUnassignPermissionForTenantModel } from "@/models/Security/Permissions/AssignOrUnassignPermissionForTenantModel";
 import { selectAuth } from "@/store/Slices/authSlice";
 import ManagePermissionForTenantValidationScheme from "@/validation-schemes/Security/Permissions/ManagePermissionForTenantValidationScheme";
-import { Grid } from "@mui/material";
 import { useFormik } from "formik";
 import { lazy, useImperativeHandle, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 const Stack = lazy(() => import("@mui/material/Stack"));
+import Grid from "@mui/material/Grid2";
 
 const ManageTenantPermissionsForm = (props: any) => {
   const { t: commonLocale } = useTranslation();
@@ -84,7 +84,7 @@ const ManageTenantPermissionsForm = (props: any) => {
           onSubmit={formik.handleSubmit}
         >
           <Grid container spacing={1.5} sx={{ width: "100%" }}>
-            <Grid item md={12} xs={12}>
+            <Grid size={{ xs: 12, md: 12 }}>
               <AppAutoComplete
                 value={formik.values.tenants}
                 setValue={(values: any) => {
